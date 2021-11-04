@@ -6,7 +6,8 @@
 - 개개인을 브랜딩화하여 일상을 공유하고 사회적 관계를 생성 및 강화시키는 것에 목적을 두고 있습니다.
 
 ## 회의록
-- [2021.11.05 4차 회의록](https://github.com/diverJenny/KOSTAGRAM/wiki/2021.11.04)
+- [2021.11.04 4차 회의록](https://github.com/diverJenny/KOSTAGRAM/wiki/2021.11.04)
+- [2021.11.05 5차 회의록](https://github.com/diverJenny/KOSTAGRAM/wiki/2021.11.05)
 
 ## 개발기간
 - 프로젝트 수행 기간  
