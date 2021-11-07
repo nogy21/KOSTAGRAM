@@ -1,5 +1,5 @@
 # KOSTAGRAM(코스타그램)
-<p align="center"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384886.png"></p>
+<p align="center"><img src="![KakaoTalk_20211105_162040832](https://user-images.githubusercontent.com/88620416/140633119-484a9f68-2bf9-49aa-8a2a-1d0edd387d7f.png)"></p>
 
 ## 프로젝트 개요
 - 사용자간의 자유로운 의사소통과 정보공유를 위한 커뮤니티 프로젝트입니다.
