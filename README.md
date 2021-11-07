@@ -8,7 +8,7 @@
 ## 회의록
 - [2021.11.04 4차 회의록](https://github.com/diverJenny/KOSTAGRAM/wiki/2021.11.04)
 - [2021.11.05 5차 회의록](https://github.com/diverJenny/KOSTAGRAM/wiki/2021.11.05)
-- [2021.11.07 5차 회의록](https://github.com/diverJenny/KOSTAGRAM/wiki/2021.11.07 회의록)
+- [2021.11.07 5차 회의록](https://github.com/diverJenny/KOSTAGRAM/wiki/2021.11.07-%ED%9A%8C%EC%9D%98%EB%A1%9D)
 
 ## 개발기간
 - 프로젝트 수행 기간  
