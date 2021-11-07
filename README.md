@@ -1,5 +1,5 @@
 # KOSTAGRAM(코스타그램)
-<p align="center"><img src="https://user-images.githubusercontent.com/88620416/140633119-484a9f68-2bf9-49aa-8a2a-1d0edd387d7f.png"></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/88620416/140651932-3bcf17f9-1d82-4d5a-880f-80f38787eafa.png"></p>
 
 ## 프로젝트 개요
 - 사용자간의 자유로운 의사소통과 정보공유를 위한 커뮤니티 프로젝트입니다.
@@ -8,6 +8,7 @@
 ## 회의록
 - [2021.11.04 4차 회의록](https://github.com/diverJenny/KOSTAGRAM/wiki/2021.11.04)
 - [2021.11.05 5차 회의록](https://github.com/diverJenny/KOSTAGRAM/wiki/2021.11.05)
+- [2021.11.07 5차 회의록](https://github.com/diverJenny/KOSTAGRAM/wiki/2021.11.05)
 
 ## 개발기간
 - 프로젝트 수행 기간  
