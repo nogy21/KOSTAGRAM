@@ -28,15 +28,15 @@
 			<section class="tiles">
 				<article>
 					<span class="image"> <img src="images/iu.jfif" alt="" />
-					</span> <a href="generic.jsp"> </a>
+					</span> <a href="GenericController.do"> </a>
 				</article>
 				<article>
 					<span class="image"> <img src="images/iu.jfif" alt="" />
-					</span> <a href="generic.jsp"> </a>
+					</span> <a href="GenericController.do"> </a>
 				</article>
 				<article>
 					<span class="image"> <img src="images/iu.jfif" alt="" />
-					</span> <a href="generic.jsp"> </a>
+					</span> <a href="GenericController.do"> </a>
 				</article>
 			</section>
 		</div>
