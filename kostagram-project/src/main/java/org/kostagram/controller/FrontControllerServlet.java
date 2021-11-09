@@ -52,5 +52,4 @@ public class FrontControllerServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		this.doDispatch(request, response);
 	}
-
 }

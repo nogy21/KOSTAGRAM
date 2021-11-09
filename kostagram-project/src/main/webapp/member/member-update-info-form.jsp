@@ -30,9 +30,9 @@
 		<div id="main">
 			<div class="inner">
 				<div class="container">
-				  <button type="button" class="btn-test" onclick="#">정보수정</button>
-				  <button type="button" class="btn-test" oncancel="#">프로필수정</button>
-				  <button type="button" class="btn-test" onclick="location.href='PasswordCheckFormController.do'">비밀번호수정</button>
+				  <button type="button" class="btn-test" onclick="location.href='UpdateMemberFormController.do'">정보수정</button>
+				  <button type="button" class="btn-test" onclick="location.href='PasswordCheckFormController.do'">프로필수정</button>
+				  <button type="button" class="btn-test" onclick="location.href='ProfileUpdateFormController.do'">비밀번호수정</button>
 				  <br><br>
 				  
 				  <form action="UpdateMemberController.do" method="post" onsubmit="return checkInput()">

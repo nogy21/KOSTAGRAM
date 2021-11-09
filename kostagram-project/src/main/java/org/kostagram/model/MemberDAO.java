@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import javax.sql.DataSource;
 
 public class MemberDAO {
@@ -100,9 +99,8 @@ public class MemberDAO {
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				memberVO = new MemberVO(rs.getString(1), null, rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7));
+				memberVO = new MemberVO(rs.getString(1), null, rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7),rs.getString(8));
 			}
-			
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -112,8 +110,24 @@ public class MemberDAO {
 		}
 				
 		return memberVO;
-
 	}
+
+    public void updateProfile(String fileName, String fileRealName, String introduce, String memberId) throws SQLException {
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        try {
+            con = dataSource.getConnection();
+            String updateProfileSql = "update member set profile_img=?, org_profile_img=?, introduce=? where member_id=?";
+            pstmt = con.prepareStatement(updateProfileSql);
+            pstmt.setString(1, fileName);
+            pstmt.setString(2, fileRealName);
+            pstmt.setString(3, introduce);
+            pstmt.setString(4, memberId);
+            pstmt.executeUpdate();
+        }finally {
+            closeAll(pstmt, con);
+        }
+    }
 }
 /*
  * public MemberVO checkpassword(String password) throws SQLException { MemberVO
