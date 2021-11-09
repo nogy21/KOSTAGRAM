@@ -2,7 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
-	session.setAttribute("loginvo", 1234);
+	String password = "1234";
+	session.setAttribute("loginVO", password);
 %>
 <div class="inner">
 	<div class="container">
@@ -43,16 +44,17 @@
 	</div>
 </div>
 <script type="text/javascript">
+	 var url = "PasswordModifyController.do";
 	function modifypassword() {
 		var password = document.getElementById("password").value;	
-		if (password!=${loginvo}) {
+		if (password!=${loginVO}) {
 			alert("기존 비밀번호와 일치하지 않습니다");
 			return;
 		}else if(newpasswordcheck()==false){
 			alert("비밀번호가 불일치합니다.");
 		}else{
 			confirm("비밀번호를 수정하시겠습니까?");
-			location.href="../PasswordModifyController.do";
+			location.href=url;
 		}
 	}
 	function newpasswordcheck(){

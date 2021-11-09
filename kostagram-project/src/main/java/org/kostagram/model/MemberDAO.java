@@ -27,4 +27,28 @@ public class MemberDAO {
         if (con != null)
             con.close();
     }
+    public void modifypassword(MemberVO membervo) throws SQLException {
+    	Connection con = null;
+    	PreparedStatement pstmt = null;
+    	try {
+    		con=dataSource.getConnection();
+    		String modifyPasswordSql = "update MEMBER set password=? where member_id=?";
+    		pstmt=con.prepareStatement(modifyPasswordSql);
+    		pstmt.setString(1, membervo.getPassword());
+    		pstmt.setString(2, membervo.getMemberId());
+    		pstmt.executeUpdate();
+    	}finally {
+    		closeAll(pstmt,con);
+    	}
+    }
 }
+/*
+ * public MemberVO checkpassword(String password) throws SQLException { MemberVO
+ * memberVO = null; Connection con = null; PreparedStatement pstmt = null;
+ * ResultSet rs = null; try { con=dataSource.getConnection(); String
+ * checkPasswordSql = "select password from member where member_id=?";
+ * pstmt=con.prepareStatement(checkPasswordSql); pstmt.setString(1, password);
+ * rs=pstmt.executeQuery(); if(rs.next()) { memberVO = new
+ * MemberVO(password,rs.getString(1)); } }finally { closeAll(rs,pstmt,con); }
+ * return memberVO; } }
+ */
