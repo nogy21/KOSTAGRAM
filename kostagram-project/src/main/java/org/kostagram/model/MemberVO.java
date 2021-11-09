@@ -25,7 +25,14 @@ public class MemberVO implements Serializable{
         this.introduce = introduce;
         this.registerDate = registerDate;
     }
-    public String getMemberId() {
+    
+    public MemberVO(String memberId, String password, String name) {
+		super();
+		this.memberId = memberId;
+		this.password = password;
+		this.name = name;
+	}
+	public String getMemberId() {
         return memberId;
     }
     public void setMemberId(String memberId) {

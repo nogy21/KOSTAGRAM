@@ -27,6 +27,7 @@ public class MemberDAO {
         if (con != null)
             con.close();
     }
+
     public void modifypassword(MemberVO membervo) throws SQLException {
     	Connection con = null;
     	PreparedStatement pstmt = null;
@@ -41,6 +42,26 @@ public class MemberDAO {
     		closeAll(pstmt,con);
     	}
     }
+    
+    public MemberVO login(String id, String password) throws SQLException {
+		MemberVO loginVO = null;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			con = dataSource.getConnection();
+			String sql="select name from member where member_id=? and password=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setString(2, password);
+			rs = pstmt.executeQuery();
+			if (rs.next())
+				loginVO = new MemberVO(id, password, rs.getString(1));
+		} finally {
+			closeAll(rs, pstmt, con);
+		}
+		return loginVO;
+	}
 }
 /*
  * public MemberVO checkpassword(String password) throws SQLException { MemberVO

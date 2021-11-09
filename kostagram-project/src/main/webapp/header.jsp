@@ -2,18 +2,13 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- Header -->
-<%
-	session.setAttribute("loginVO", 1234);
-%>
 <header id="header">
 	<c:choose>
 		<c:when test="${sessionScope.loginVO==null}">
-			<form>
 				<div align="right">
-					<button class="btn-test" onclick="LoginFormController.do">로그인</button>
-					<button class="btn-test" onclick="RegisterFormController.do">회원가입</button>
+					<button class="btn-test" onclick="location.href='LoginFormController.do'">로그인</button>
+					<button class="btn-test" onclick="location.href='RegisterFormController.do'">회원가입</button>
 				</div>
-			</form>
 		</c:when>
 		<c:otherwise>
 			<div align="right">
