@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.kostagram.model.MemberDAO;
+import org.kostagram.model.MemberVO;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -16,6 +17,9 @@ public class ProfileUpdateController implements Controller {
             System.out.println("포스트 요청 방식이 아닙니다");
             return "redirect:index.jsp";
         }
+        MemberVO vo = (MemberVO)request.getSession().getAttribute("loginVO");
+        String memberId = vo.getMemberId();
+
         // String path = request.getContextPath();
         // String directory = request.getServletContext().getRealPath("/upload/");
         String directory = "C:\\Users\\Yong Lee\\git\\KOSTAGRAM\\kostagram-project\\src\\main\\webapp\\images";
@@ -25,16 +29,11 @@ public class ProfileUpdateController implements Controller {
         MultipartRequest multipartRequest 
         = new MultipartRequest(request, directory, maxSize, encoding
                 , new DefaultFileRenamePolicy());
-                
-        System.out.println("ProfileUpdateController - directory 확인: " + directory);
         
         String fileName = multipartRequest.getOriginalFileName("file");
         String fileRealName = multipartRequest.getFilesystemName("file");
-        String introduce = request.getParameter("introduce");
-        
-        MemberDAO.getInstance().updateProfile(fileName, fileRealName, introduce);
-        System.out.println("테스트 출력 파일명: " + fileName);
-        System.out.println("테스트 출력 실제 파일명: " + fileRealName);
+        String introduce = multipartRequest.getParameter("introduce");
+        MemberDAO.getInstance().updateProfile(fileName, fileRealName, introduce, memberId);
         return "redirect:MainController.do";
     }
 }

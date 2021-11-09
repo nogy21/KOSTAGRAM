@@ -27,17 +27,17 @@ public class MemberDAO {
         if (con != null)
             con.close();
     }
-    public void updateProfile(String fileName, String fileRealName, String introduce) throws SQLException {
+    public void updateProfile(String fileName, String fileRealName, String introduce, String memberId) throws SQLException {
         Connection con = null;
         PreparedStatement pstmt = null;
         try {
             con = dataSource.getConnection();
-            StringBuilder updateProfileSql = new StringBuilder("update member set profile_img=?, org_profile_img=?");
-            updateProfileSql.append(", introduce=?");
-            pstmt = con.prepareStatement(updateProfileSql.toString());
+            String updateProfileSql = "update member set profile_img=?, org_profile_img=?, introduce=? where member_id=?";
+            pstmt = con.prepareStatement(updateProfileSql);
             pstmt.setString(1, fileName);
             pstmt.setString(2, fileRealName);
             pstmt.setString(3, introduce);
+            pstmt.setString(4, memberId);
             pstmt.executeUpdate();
         }finally {
             closeAll(pstmt, con);

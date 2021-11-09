@@ -7,7 +7,8 @@ public class ProfileUpdateFormController implements Controller {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        return "member/update-profile.jsp";
+        request.setAttribute("url", "member/update-profile.jsp");
+        return "layout.jsp";
     }
 
 }

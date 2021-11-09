@@ -1,6 +1,8 @@
 package org.kostagram.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,9 +19,9 @@ public class FrontControllerServlet extends HttpServlet {
 	protected void doDispatch(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
-		String uri=request.getRequestURI();//  /webstudy27-jstl-member/FindMemberByIdController.do
-		String contextPath=request.getContextPath();//  /webstudy27-jstl-member
-		String command=uri.substring(contextPath.length()+1, uri.length()-3);//Controller class명만 추출 : FindMemberByIdController
+		String uri=request.getRequestURI();
+		String contextPath=request.getContextPath();
+		String command=uri.substring(contextPath.length()+1, uri.length()-3);
 		Controller controller=HandlerMapping.getInstance().create(command);
 		String path=controller.execute(request, response);
 		if(path.startsWith("redirect:")) {
