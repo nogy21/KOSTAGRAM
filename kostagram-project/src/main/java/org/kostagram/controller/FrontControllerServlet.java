@@ -31,7 +31,8 @@ public class FrontControllerServlet extends HttpServlet {
 				// forward 또는 redirect 방식이 아니라 response를 이용해 직접 출력한다
 				response.setContentType("text/html;charset=utf-8");
 				PrintWriter out = response.getWriter();
-				out.print(request.getAttribute("responsebody").toString()); out.close();
+				out.print(request.getAttribute("responsebody").toString());
+				out.close();
 			} else {
 				request.getRequestDispatcher(path).forward(request, response);
 			}

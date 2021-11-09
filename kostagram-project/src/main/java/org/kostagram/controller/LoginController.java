@@ -18,21 +18,18 @@ public class LoginController implements Controller {
 		}
 		String memberId = request.getParameter("memberId");
 		String password = request.getParameter("password");
-		System.out.println(memberId+password);
 		HttpSession session=request.getSession(false);
 		MemberVO memberVO = MemberDAO.getInstance().login(memberId, password);
-		String info="";
+		String info=null;
 		if(memberVO==null) {
-			info="아이디 또는 비밀번호를 확인하세요";
+			info="아이디 혹은 비밀번호를 확인하세요";
 			request.setAttribute("responsebody", info);
-			System.out.println("실패");
-
-			return "AjaxView";
-		}else {
+		} else {
+			info="성공";
 			session.setAttribute("loginVO", memberVO);
-			System.out.println("성공");
-			return "redirect:MainController.do";
+			request.setAttribute("responsebody", info);
 		}
+		return "AjaxView";
 	}
 
 }
