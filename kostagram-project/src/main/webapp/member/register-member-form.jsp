@@ -5,42 +5,77 @@
 <div id="main">
     <div class="inner">
         <h2>회원가입</h2>
-        
         <script type="text/javascript">
             function checkId() {
                 let memberId = document.getElementById("memberId").value;    
-                
+                //아이디 공란인 경우 가입하기 불가, alert창 활성화
                 if(memberId == ""){
                     alert("아이디를 입력하세요!");
                     return;
                 }
+                //아이디 중복확인 Ajax 구현
                 let xhr = new XMLHttpRequest();
                 xhr.onload = function() {
                     document.getElementById("idCheckNotice").innerHTML = xhr.responseText;
-                    /*
-                    if(result.equals("아이디 중복되어 사용불가합니다")) {
+                    document.getElementById("flag").value = document.getElementById("memberId").value;
+                    
+                    if(xhr.responseText.equals("아이디 중복되어 사용불가합니다")) {
                         document.getElementById("memberId").value = "";
                         document.getElementById("memberId").focus();
-                    }else {
-                    	document.getElementById("flag").value = document.getElementById("memberId").value;
+                    }else if(xhr.responseText.equals("아이디 사용가능합니다!")) {
+                    	document.getElementById("password").focus();
                     }
-                    */
-                    document.getElementById("flag").value = document.getElementById("memberId").value;
                 }
-                xhr.open("get", "IdCheckController.do?memberId=" + memberId);
-                xhr.send();
+                //post방식에서 get방식으로 변경
                 //xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
                 //xhr.send("id=" + memberId);
-                
+                xhr.open("get", "IdCheckController.do?memberId=" + memberId);
+                xhr.send();
             }
+            
             // 아이디 중복확인하지 않은 상태에서 가입하기를 누르면 아이디 중복확인하세요 alert 후 전송시키지 않는다 
             function checkForm(){
                 if(document.getElementById("memberId").value!=document.getElementById("flag").value){
                     alert("아이디 중복확인하세요");
                     return false;
                 }
-                if(xhr.responseText == "아이디 중복되어 사용불가합니다") {
-                    document.getElementById("memberId").value = "";
+                if(document.getElementById("password").value != document.getElementById("confirmPwd").value) {
+                    alert("패스워드가 일치하지 않습니다!");
+                    return false;
+                }
+            }
+            
+            //비밀번호 일치 여부 확인 메서드 
+            function passwordMatch() {
+                var match = document.getElementById('passMatch');
+                var pswd = document.getElementById("confirmPwd");
+                var pwd = document.getElementById("password");
+                if(pswd.value.length == 0) { //')' token error duplicate, syntax error 발생지점
+                    match.innerHTML = 'Type Password';
+                } else if (pwd.value ==  pswd.value) {
+                    match.innerHTML = '<span style="color:green">password Matched!</span>';
+                } else {
+                    match.innerHTML = '<span style="color:red">discord with password</span>';
+                }
+            }
+            
+            //비밀번호 보안강도 표시 메서드
+            function passwordChanged() {
+                var strength = document.getElementById('strength');
+                var strongRegex = new RegExp("^(?=.{8,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*\\W).*$", "g");
+                var mediumRegex = new RegExp("^(?=.{8,})(((?=.*[a-zA-Z])(?=.*[0-9]))|((?=.*[a-zA-Z])(?=.*[0-9]))).*$", "g");
+                var enoughRegex = new RegExp("(?=.{6,}).*", "g");
+                var pwd = document.getElementById("password");
+                if (pwd.value.length == 0) {
+                    strength.innerHTML = 'Type Password';
+                } else if (false == enoughRegex.test(pwd.value)) {
+                    strength.innerHTML = 'More Characters';
+                } else if (strongRegex.test(pwd.value)) {
+                    strength.innerHTML = '<span style="color:green">Strong!</span>';
+                } else if (mediumRegex.test(pwd.value)) {
+                    strength.innerHTML = '<span style="color:orange">Medium!</span>';
+                } else {
+                    strength.innerHTML = '<span style="color:red">Weak!</span>';
                 }
             }
         </script>
@@ -52,7 +87,12 @@
 			<button type="button" onclick="checkId()">중복확인</button>
 			<span id="idCheckNotice"></span><br><br>
 			
-			<input type="password" name="password" required="required" placeholder="패스워드"><br><br>
+			<input type="password" name="password" id="password" required="required" placeholder="비밀번호" onkeyup="return passwordChanged()"><br><br>
+			<span id="strength">Type Password</span><br><br>
+			
+			<input type="password" name="confirmPwd" id="confirmPwd" name="confirmPswd" required="required" placeholder="비밀번호확인" onkeyup="return passwordMatch()"><br><br>
+			<span id="passMatch">Type Password</span><br><br>
+			
 			<input type="text" name="email" required="required" placeholder="이메일"><br><br>
 			<input type="text" name="name" required="required" placeholder="이름"><br><br>
 			

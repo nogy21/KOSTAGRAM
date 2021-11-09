@@ -17,7 +17,7 @@ public class RegisterController implements Controller {
         MemberVO vo = new MemberVO(memberId, password, email, name, null);
         MemberDAO.getInstance().registerMember(vo);
         
-        return "redirect:MainController.do";
+        return "redirect:RegisterResultController.do";
     }
 
 }
