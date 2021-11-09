@@ -3,15 +3,17 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div class="inner">
 	<div class="container">
+	<form action="PasswordModifyController.do" method="post" onsubmit="return modifypassword()">
 		<table class="table table-borderless">
 			<thead>
 				<tr>
-					<th>비밀번호 수정</th>
+					<th>${sessionScope.loginVO.memberId }님 비밀번호 수정</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
 					<td>
+						<input type="hidden" name="memberId" id="memberId" value="${sessionScope.loginVO.memberId }">
 						<input type="password" id="password" required="required" placeholder="이전비밀번호">
 					</td>
 				</tr>
@@ -32,25 +34,28 @@
 				</tr>
 				<tr>
 					<td>
-						<button type="button" onclick="modifypassword()">확인</button>
+						<button type="submit">확인</button>
 					</td>
 				</tr>
 			</tbody>
 		</table>
+		</form>
 	</div>
 </div>
 <script type="text/javascript">
-	 var url = "PasswordModifyController.do";
 	function modifypassword() {
 		var password = document.getElementById("password").value;	
-		if (password!=${loginVO}) {
+		if (password!=${sessionScope.loginVO.password}) {
 			alert("기존 비밀번호와 일치하지 않습니다");
-			return;
+			return false;
 		}else if(newpasswordcheck()==false){
 			alert("비밀번호가 불일치합니다.");
+			return false;
 		}else{
-			confirm("비밀번호를 수정하시겠습니까?");
-			location.href=url;
+			if(confirm("비밀번호를 수정하시겠습니까?")==true){
+				return true;
+			}else
+				return false;
 		}
 	}
 	function newpasswordcheck(){

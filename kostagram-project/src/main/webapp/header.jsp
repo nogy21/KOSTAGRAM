@@ -12,9 +12,9 @@
 		</c:when>
 		<c:otherwise>
 			<div align="right">
-				<a href ="UpdateMemberFormController">회원정보수정</a>&nbsp;&nbsp;
+				<a href ="UpdateMemberFormController.do">회원정보수정</a>&nbsp;&nbsp;
 				<a href =>마이페이지</a>&nbsp;&nbsp;
-				<%-- ${loginVO.name }님&nbsp;&nbsp; --%>
+				${sessionScope.loginVO.memberId }님&nbsp;&nbsp;
 				<a href =>로그아웃</a>&nbsp;&nbsp;
 				</div>
 		</c:otherwise>

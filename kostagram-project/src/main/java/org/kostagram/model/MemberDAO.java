@@ -28,15 +28,15 @@ public class MemberDAO {
             con.close();
     }
 
-    public void modifypassword(MemberVO membervo) throws SQLException {
+    public void modifypassword(String id, String password) throws SQLException {
     	Connection con = null;
     	PreparedStatement pstmt = null;
     	try {
     		con=dataSource.getConnection();
     		String modifyPasswordSql = "update MEMBER set password=? where member_id=?";
     		pstmt=con.prepareStatement(modifyPasswordSql);
-    		pstmt.setString(1, membervo.getPassword());
-    		pstmt.setString(2, membervo.getMemberId());
+    		pstmt.setString(1, password);
+    		pstmt.setString(2, id);
     		pstmt.executeUpdate();
     	}finally {
     		closeAll(pstmt,con);
@@ -61,6 +61,58 @@ public class MemberDAO {
 			closeAll(rs, pstmt, con);
 		}
 		return loginVO;
+   }
+    
+	public MemberVO UpdateMember(String memberId, String email, String name) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		MemberVO memberVO = null;
+		ResultSet rs = null;
+		
+		try {
+			con = dataSource.getConnection();
+			String UpdateMemberSql = null;
+			
+			if(email =="") {
+				UpdateMemberSql = "UPDATE member SET name=? WHERE member_id=?";
+				pstmt = con.prepareStatement(UpdateMemberSql);
+				pstmt.setString(1, name);
+				pstmt.setString(2, memberId);
+			}else if(name == "") {
+				UpdateMemberSql = "UPDATE member SET email=? WHERE member_id=?";
+				pstmt = con.prepareStatement(UpdateMemberSql);
+				pstmt.setString(1, email);
+				pstmt.setString(2, memberId);
+			}else {
+				UpdateMemberSql = "UPDATE member SET email=?, name=? WHERE member_id=?";
+				pstmt = con.prepareStatement(UpdateMemberSql);
+				pstmt.setString(1, email);
+				pstmt.setString(2, name);
+				pstmt.setString(3, memberId);
+			}
+			
+			pstmt.executeUpdate();
+			pstmt.close();
+			
+			String updateSessionSql = "SELECT * FROM member WHERE member_id = ?";
+			pstmt = con.prepareStatement(updateSessionSql);
+			pstmt.setString(1, memberId);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				memberVO = new MemberVO(rs.getString(1), null, rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7));
+			}
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeAll(pstmt, con);
+		}
+				
+		return memberVO;
+
 	}
 }
 /*

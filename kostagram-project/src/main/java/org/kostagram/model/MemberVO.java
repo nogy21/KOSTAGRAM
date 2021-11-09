@@ -82,9 +82,9 @@ public class MemberVO implements Serializable{
         return "MemberVO [memberId=" + memberId + ", password=" + password + ", email=" + email + ", name=" + name
                 + ", profileImg=" + profileImg + ", introduce=" + introduce + ", registerDate=" + registerDate + "]";
     }
-	public MemberVO(String memberId, String password) {
+	public MemberVO(String memberId,String password) {
 		super();
-		this.memberId = memberId;
 		this.password = password;
+		this.memberId = memberId;
 	}
 }

@@ -5,7 +5,7 @@
 	var url = 'PasswordModifyFormController.do';
 	function checkpassword(){
 		var password = document.getElementById('password').value;
-		if(password==${loginVO}){
+		if(password==${sessionScope.loginVO.password}){
 				location.href=url;
 			}else{
 				alert("비밀번호가 일치하지 않습니다.")
