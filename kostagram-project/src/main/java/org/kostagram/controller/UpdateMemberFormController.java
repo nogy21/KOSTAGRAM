@@ -12,7 +12,7 @@ public class UpdateMemberFormController implements Controller {
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		MemberVO loginVO = new MemberVO("yang1762", null, "yang1762@gmail.com", "¾ç¼º¿ø", null, null, null);
 		
-		HttpSession session = request.getSession();
+		HttpSession session = request.getSession(false);
 		session.setAttribute("loginVO", loginVO);
 		
 		request.setAttribute("url", "member/member-update-info-form.jsp");

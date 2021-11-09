@@ -2,8 +2,10 @@ package org.kostagram.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.kostagram.model.MemberDAO;
+import org.kostagram.model.MemberVO;
 
 public class UpdateMemberController implements Controller {
 
@@ -13,7 +15,9 @@ public class UpdateMemberController implements Controller {
 		String email = request.getParameter("email");
 		String name = request.getParameter("name");
 		
-		MemberDAO.getInstance().UpdateMember(memberId, email, name);
+		MemberVO memberVO = MemberDAO.getInstance().UpdateMember(memberId, email, name);
+		HttpSession session = request.getSession(false);
+		session.setAttribute("loginVO", memberVO);
 		
 		return "redirect:MainController.do";
 	}

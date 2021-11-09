@@ -28,9 +28,11 @@ public class MemberDAO {
             con.close();
     }
     
-	public void UpdateMember(String memberId, String email, String name) throws SQLException {
+	public MemberVO UpdateMember(String memberId, String email, String name) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		MemberVO memberVO = null;
+		ResultSet rs = null;
 		
 		try {
 			con = dataSource.getConnection();
@@ -55,6 +57,17 @@ public class MemberDAO {
 			}
 			
 			pstmt.executeUpdate();
+			pstmt.close();
+			
+			String updateSessionSql = "SELECT * FROM member WHERE member_id = ?";
+			pstmt = con.prepareStatement(updateSessionSql);
+			pstmt.setString(1, memberId);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				memberVO = new MemberVO(rs.getString(1), null, rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7));
+			}
+			
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -63,6 +76,6 @@ public class MemberDAO {
 			closeAll(pstmt, con);
 		}
 				
-		
+		return memberVO;
 	}
 }
