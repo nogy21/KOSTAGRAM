@@ -45,7 +45,7 @@
 <script type="text/javascript">
 	function modifypassword() {
 		var password = document.getElementById("password").value;	
-		if (password!=${sessionScope.loginVO.password}) {
+		if (password!="${sessionScope.loginVO.password}") {
 			alert("기존 비밀번호와 일치하지 않습니다");
 			return false;
 		}else if(newpasswordcheck()==false){

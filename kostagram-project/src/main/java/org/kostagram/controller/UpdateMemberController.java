@@ -19,7 +19,7 @@ public class UpdateMemberController implements Controller {
 		HttpSession session = request.getSession(false);
 		session.setAttribute("loginVO", memberVO);
 		
-		return "redirect:MainController.do";
+		return "redirect:UpdateMemberFormController.do";
 	}
 
 }

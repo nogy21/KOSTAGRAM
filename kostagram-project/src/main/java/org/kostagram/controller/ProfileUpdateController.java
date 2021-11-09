@@ -23,7 +23,7 @@ public class ProfileUpdateController implements Controller {
         // String path = request.getContextPath();
         // String directory = request.getServletContext().getRealPath("/upload/");
         // 로컬 경로 지정
-        String directory = "C:\\Users\\Yong Lee\\git\\KOSTAGRAM\\kostagram-project\\src\\main\\webapp\\images";
+        String directory = "\\images\\";
         int maxSize = 1024 * 1024 * 100;
         String encoding = "utf-8";
     

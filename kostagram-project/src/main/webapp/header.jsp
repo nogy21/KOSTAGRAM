@@ -15,7 +15,8 @@
 				<a href ="UpdateMemberFormController.do">회원정보수정</a>&nbsp;&nbsp;
 				<a href =>마이페이지</a>&nbsp;&nbsp;
 				${sessionScope.loginVO.memberId }님&nbsp;&nbsp;
-				<a href =>로그아웃</a>&nbsp;&nbsp;
+				 <a href="javascript:logout()">로그아웃</a>&nbsp;&nbsp;
+        		<form action="LogoutController.do" method="post" id="logoutForm"></form>
 				</div>
 		</c:otherwise>
 	</c:choose>
@@ -34,3 +35,11 @@
 		</div>
 	</form>
 </header>
+<script>
+            function logout(){
+                let rst = confirm("로그아웃하시겠습니까?");
+                if (rst) {
+                    document.getElementById("logoutForm").submit();
+                }
+            }
+        </script>

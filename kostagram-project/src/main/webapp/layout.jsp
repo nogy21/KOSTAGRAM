@@ -25,7 +25,7 @@
 <c:import url="header.jsp"/>
 <%--메인--%>
 <div id="wrapper">
-<c:import url="${requestScope.url}"/> 
+<c:import url="${requestScope.url}"/>
 <%--푸터--%>
 <c:import url="footer.jsp"/>
 </div> 

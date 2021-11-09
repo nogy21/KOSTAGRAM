@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 import javax.sql.DataSource;
 
 public class MemberDAO {
@@ -49,13 +50,13 @@ public class MemberDAO {
 		ResultSet rs = null;
 		try {
 			con = dataSource.getConnection();
-			String sql="select name from member where member_id=? and password=?";
+			String sql="select * from member where member_id=? and password=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id);
 			pstmt.setString(2, password);
 			rs = pstmt.executeQuery();
 			if (rs.next())
-				loginVO = new MemberVO(id, password, rs.getString(1));
+				loginVO = new MemberVO(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8));
 		} finally {
 			closeAll(rs, pstmt, con);
 		}
@@ -111,8 +112,7 @@ public class MemberDAO {
 				
 		return memberVO;
 	}
-
-    public void updateProfile(String fileName, String fileRealName, String introduce, String memberId) throws SQLException {
+	public void updateProfile(String fileName, String fileRealName, String introduce, String memberId) throws SQLException {
         Connection con = null;
         PreparedStatement pstmt = null;
         try {
@@ -128,14 +128,42 @@ public class MemberDAO {
             closeAll(pstmt, con);
         }
     }
-}
-/*
- * public MemberVO checkpassword(String password) throws SQLException { MemberVO
- * memberVO = null; Connection con = null; PreparedStatement pstmt = null;
- * ResultSet rs = null; try { con=dataSource.getConnection(); String
- * checkPasswordSql = "select password from member where member_id=?";
- * pstmt=con.prepareStatement(checkPasswordSql); pstmt.setString(1, password);
- * rs=pstmt.executeQuery(); if(rs.next()) { memberVO = new
- * MemberVO(password,rs.getString(1)); } }finally { closeAll(rs,pstmt,con); }
- * return memberVO; } }
- */
+	//회원가입 메서드
+	public void registerMember(MemberVO registerVO) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+    	try {
+        	con = dataSource.getConnection();
+        	StringBuilder registerSql = new StringBuilder();
+            registerSql.append("insert into MEMBER(member_id, password, email, name, register_date) ");
+            registerSql.append("values (?, ?, ?, ?, sysdate)");
+            pstmt = con.prepareStatement(registerSql.toString());
+            pstmt.setString(1, registerVO.getMemberId());
+            pstmt.setString(2, registerVO.getPassword());
+            pstmt.setString(3, registerVO.getEmail());
+            pstmt.setString(4, registerVO.getName());
+            pstmt.executeUpdate();
+        }finally {
+            closeAll(pstmt, con);
+        }
+    }
+    //아이디 중복확인 체크 메서드 
+    public boolean checkId(String id) throws SQLException {
+        boolean result = false;
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        try {
+            con = dataSource.getConnection();
+            String checkIdSql = "select count(*) from member where member_id=?";
+            pstmt = con.prepareStatement(checkIdSql);
+            pstmt.setString(1, id);
+            rs = pstmt.executeQuery();
+            if(rs.next()&&rs.getInt(1)==1)
+                result=true;
+        }finally {
+            closeAll(rs, pstmt, con);
+        }
+        return result;
+    }
+ }
