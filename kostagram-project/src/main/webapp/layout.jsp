@@ -19,13 +19,14 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="assets/css/main.css" />
+<link rel="stylesheet" href="assets/css/sub.css">
 </head>
 <body class="is-preload">
 <%--헤더--%>
 <c:import url="header.jsp"/>
 <%--메인--%>
 <div id="wrapper">
-<c:import url="${requestScope.url}"/> 
+<c:import url="${requestScope.url}"/>
 <%--푸터--%>
 <c:import url="footer.jsp"/>
 </div> 
