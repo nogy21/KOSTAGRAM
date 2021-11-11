@@ -193,4 +193,30 @@ public class PostDAO {
 			}
 			return searchPostList;
 		}
-}
+		public ArrayList<PostVO> surfpost() throws SQLException {
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs= null;
+			PostVO pvo = null;
+			ArrayList<PostVO> list = new ArrayList<PostVO>();
+			
+			try {
+				con = dataSource.getConnection();
+				String surfpostSql = "select * from post";
+				
+				pstmt = con.prepareStatement(surfpostSql);
+				rs= pstmt.executeQuery();
+				
+				while(rs.next()) {
+					pvo = new PostVO(rs.getInt(1), null, null, rs.getString(4), null, null, null, null);
+					list.add(pvo);
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				closeAll(rs, pstmt, con);
+			}		
+			return list;
+		}
+	}

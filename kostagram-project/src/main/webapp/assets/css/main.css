@@ -31,6 +31,11 @@ section, summary, time, mark, audio, video {
    height : 50px;
 }
 
+#content_img{
+   width : 580px;
+   height : 550px;
+}
+
 #profile_img2{
    border-radius: 70%;
    width : 200px;

@@ -56,16 +56,3 @@ insert into post(post_id, member_id, img, org_img, post_content,post_date)
 values(post_seq.nextval, 'java', 'pic01.jpg', 'pic01.jpg','text context', sysdate);
 
 delete from post where post_id between 54 and 55; 
-
-SELECT * FROM post WHERE member_id = 'java' and post_id = (select max(post_id) from post);
-
-select max(post_id) from post;
-
-SELECT * FROM post WHERE member_id = 'java' and post_id = (select max(post_id) from post where member_id = 'java');
-
-SELECT * FROM post WHERE member_id = 'java' and post_id = (select max(post_id) from post where member_id = 'java');
-
-select * from POST_COMMENT;
-
-
-
