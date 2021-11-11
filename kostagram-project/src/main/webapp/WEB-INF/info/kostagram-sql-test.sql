@@ -19,5 +19,38 @@ delete from likes where post_id=3 and member_id='jw';
 
 SELECT COUNT(member_id) as likecnt FROM likes where post_id=3;
 
+insert into post(post_id, member_id, img, org_img, post_content, post_date)
+values(post_seq.nextval, 'jw', 'pic02.jpg', 'pic02.jpg', 'test', sysdate);
+
+insert into post(post_id, member_id, img, org_img, post_content, post_date)
+values(post_seq.nextval, 'jw', 'pic03.jpg', 'pic03.jpg', 'test', sysdate);
+
+insert into post(post_id, member_id, img, org_img, post_content, post_date)
+values(post_seq.nextval, 'jw', 'pic04.jpg', 'pic04.jpg', 'test', sysdate);
+
+
+insert into post(post_id, member_id, img, org_img, post_content, post_date)
+values(post_seq.nextval, 'jw', 'pic05.jpg', 'pic05.jpg', 'test', sysdate);
+
+insert into post(post_id, member_id, img, org_img, post_content, post_date)
+values(post_seq.nextval, 'jw', 'pic06.jpg', 'pic06.jpg', 'test', sysdate);
+
+
+insert into post(post_id, member_id, img, org_img, post_content, post_date)
+values(post_seq.nextval, 'jw', 'pic07.jpg', 'pic07.jpg', 'test', sysdate);
+
+insert into post(post_id, member_id, img, org_img, post_content, post_date)
+values(post_seq.nextval, 'jw', 'pic08.jpg', 'pic08.jpg', 'test', sysdate);
+
+
+insert into post(post_id, member_id, img, org_img, post_content, post_date)
+values(post_seq.nextval, 'jw', 'pic09.jpg', 'pic09.jpg', 'test', sysdate);
+
+
+
+
+
+
+
 
 

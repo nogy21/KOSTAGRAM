@@ -15,7 +15,6 @@ small, strike, strong, sub, sup, tt, var, b,
 u, i, center, dl, dt, dd, ol, ul, li, fieldset,
 form, label, legend, table, caption, tbody,
 tfoot, thead, tr, th, td, article, aside,
-canvas, details, embed, figure, figcaption,
 footer, header, hgroup, menu, nav, output, ruby,
 section, summary, time, mark, audio, video {
 	margin: 0;
@@ -29,6 +28,12 @@ section, summary, time, mark, audio, video {
    border-radius: 70%;
    width : 50px;
    height : 50px;
+}
+
+#profile_img2{
+   border-radius: 70%;
+   width : 200px;
+   height : 200px;
 }
 
 #profile_name{
@@ -93,19 +98,19 @@ blockquote, q {
 		content: none;
 	}
 
-table {
+/* table {
 	border-collapse: collapse;
 	border-spacing: 0;
-}
+} */
 
 body {
 	-webkit-text-size-adjust: none;
 }
 
-mark {
+/* mark {
 	background-color: transparent;
 	color: inherit;
-}
+} */
 
 /* input::-moz-focus-inner {
 	border: 0;
@@ -2419,7 +2424,7 @@ mark {
 
 /* Table */
 
-	.table-wrapper {
+	/* .table-wrapper {
 		-webkit-overflow-scrolling: touch;
 		overflow-x: auto;
 	}
@@ -2483,7 +2488,7 @@ mark {
 			table.alt tfoot {
 				border-top: 0;
 			}
-
+ */
 /* Button */
 
 	/* input[type="submit"],
@@ -2632,7 +2637,7 @@ mark {
 			-ms-transition: -ms-transform 0.5s ease, opacity 0.5s ease;
 			transition: transform 0.5s ease, opacity 0.5s ease;
 			position: relative;
-			width: calc(70% - 2.5em);
+			width: calc(30% - 2.5em);
 			margin: 2.5em 0 0 2.5em;
 		}
 
@@ -2694,7 +2699,7 @@ mark {
 					z-index: 2;
 				}
 
-			.tiles article > a {
+			/* .tiles article > a {
 				display: -moz-flex;
 				display: -webkit-flex;
 				display: -ms-flex;
@@ -2756,7 +2761,7 @@ mark {
 					.tiles article > a .content > :last-child {
 						margin-bottom: 0;
 					}
-			/*
+ */			/*
 			백그라운드 색상
 			
 			.tiles article.style1 > .image:before {
@@ -3225,7 +3230,7 @@ mark {
 
 /* Footer */
 
-	#footer {
+/* 	#footer {
 		padding: 5em 0 6em 0 ;
 		background-color: #f6f6f6;
 	}
@@ -3371,7 +3376,7 @@ mark {
 					}
 
 		}
-
+ */
 /* Wrapper */
 
 	#wrapper > * > .inner {
@@ -3401,3 +3406,6 @@ mark {
 	flex-direction: column;
 	align-items: center;
 }
+
+
+
