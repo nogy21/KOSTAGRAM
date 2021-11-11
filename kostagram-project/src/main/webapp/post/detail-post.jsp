@@ -7,17 +7,10 @@
 		<!-- Main -->
 		<div id="main">
 			<div class="inner">
-			
 				<h1>Generic Page</h1>
 				<span class="image main"><img src="images/${requestScope.postVO.orgImg }" alt="" /></span>
 				<p>${requestScope.postVO.postContent }</p>
-				
-				<%-- 
-				<%-- 수정코드
-				<h1>Generic Page</h1>
-                <span class="image main"><img src="images/${sessionScope.postVO.orgImg }" alt="" /></span>
-                <p>${sessionScope.postVO.postContent }</p>
-				--%>
+				<c:import url="post/comment.jsp"/>
 			</div>
 		</div>
 	</div>

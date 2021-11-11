@@ -17,7 +17,6 @@ public class MainController implements Controller {
 		HttpSession session = request.getSession(false);
 		MemberVO loginVO = (MemberVO) session.getAttribute("loginVO");
 		
-		String memberId = loginVO.getMemberId();
 		ArrayList<PostVO> postList = PostDAO.getInstance().mainPostList(loginVO.getMemberId());
 		
 		request.setAttribute("postList", postList);

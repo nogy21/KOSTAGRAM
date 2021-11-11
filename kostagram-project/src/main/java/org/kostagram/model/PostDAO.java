@@ -28,7 +28,6 @@ public class PostDAO {
         if (con != null)
             con.close();
     }
-    
 	public ArrayList<PostVO> mainPostList(String memberId) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -39,13 +38,12 @@ public class PostDAO {
 		try {
 			con = dataSource.getConnection();
 			String postSql = "SELECT * FROM post WHERE member_id=?order by post_date desc";
-			
 			pstmt = con.prepareStatement(postSql);
 			pstmt.setString(1, memberId);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
-				vo = new PostVO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6));
+				vo = new PostVO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), null);
 				list.add(vo);
 			}
 			
@@ -58,6 +56,7 @@ public class PostDAO {
 		
 		return list;
 	}
+	// 게시글 상세보기
 	public PostVO getPostDetail(String postId) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -66,6 +65,7 @@ public class PostDAO {
 		
 		try {
 			con = dataSource.getConnection();
+			// 댓글 join
 			String postSql = "SELECT * FROM post WHERE post_id = ?";
 			
 			pstmt = con.prepareStatement(postSql);
@@ -73,7 +73,9 @@ public class PostDAO {
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				vo = new PostVO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6));
+			    // 수정 필요
+			    CommentVO cvo = new CommentVO();
+				vo = new PostVO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), cvo);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -88,7 +90,6 @@ public class PostDAO {
 	public void uploadPost(String fileName, String fileRealName, String postContent, String memberId) throws SQLException {
 	    Connection con = null;
         PreparedStatement pstmt = null;
-        PostVO vo = null;
         try {
             con = dataSource.getConnection();
             StringBuilder postUploadSql = new StringBuilder();
@@ -101,12 +102,12 @@ public class PostDAO {
             pstmt.setString(4, postContent);
             pstmt.executeUpdate();
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         } finally {
             closeAll(pstmt, con);
         }
 	}
+	// 포스트 아이디 조회
 	public PostVO getPostId(String memberId) throws SQLException {
 	    Connection con = null;
         PreparedStatement pstmt = null;
@@ -122,17 +123,13 @@ public class PostDAO {
             rs = pstmt.executeQuery();
             
             if(rs.next()) {
-                vo = new PostVO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6));
+                vo = new PostVO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), null);
             }
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         } finally {
             closeAll(rs, pstmt, con);
         }
         return vo;
 	}
-	
-	
-	
 }

@@ -10,80 +10,88 @@ public class PostVO implements Serializable{
 	private String orgImg;
 	private String postContent;
 	private String postDate;
+
+	private CommentVO commentVO;
 	
 	public PostVO() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	public PostVO(int postId, String memberId, String img, String orgImg, String postContent, String postDate) {
-		super();
-		this.postId = postId;
-		this.memberId = memberId;
-		this.img = img;
-		this.orgImg = orgImg;
-		this.postContent = postContent;
-		this.postDate = postDate;
-	}
+    public PostVO(int postId, String memberId, String img, String orgImg, String postContent, String postDate,
+            CommentVO commentVO) {
+        super();
+        this.postId = postId;
+        this.memberId = memberId;
+        this.img = img;
+        this.orgImg = orgImg;
+        this.postContent = postContent;
+        this.postDate = postDate;
+        this.commentVO = commentVO;
+    }
 
-	public int getPostId() {
-		return postId;
-	}
+    public int getPostId() {
+        return postId;
+    }
 
-	public void setPostId(int postId) {
-		this.postId = postId;
-	}
+    public void setPostId(int postId) {
+        this.postId = postId;
+    }
 
-	public String getMemberId() {
-		return memberId;
-	}
+    public String getMemberId() {
+        return memberId;
+    }
 
-	public void setMemberId(String memberId) {
-		this.memberId = memberId;
-	}
+    public void setMemberId(String memberId) {
+        this.memberId = memberId;
+    }
 
-	public String getImg() {
-		return img;
-	}
+    public String getImg() {
+        return img;
+    }
 
-	public void setImg(String img) {
-		this.img = img;
-	}
+    public void setImg(String img) {
+        this.img = img;
+    }
 
-	public String getOrgImg() {
-		return orgImg;
-	}
+    public String getOrgImg() {
+        return orgImg;
+    }
 
-	public void setOrgImg(String orgImg) {
-		this.orgImg = orgImg;
-	}
+    public void setOrgImg(String orgImg) {
+        this.orgImg = orgImg;
+    }
 
-	public String getPostContent() {
-		return postContent;
-	}
+    public String getPostContent() {
+        return postContent;
+    }
 
-	public void setPostContent(String postContent) {
-		this.postContent = postContent;
-	}
+    public void setPostContent(String postContent) {
+        this.postContent = postContent;
+    }
 
-	public String getPostDate() {
-		return postDate;
-	}
+    public String getPostDate() {
+        return postDate;
+    }
 
-	public void setPostDate(String postDate) {
-		this.postDate = postDate;
-	}
+    public void setPostDate(String postDate) {
+        this.postDate = postDate;
+    }
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
+    public CommentVO getCommentVO() {
+        return commentVO;
+    }
 
-	@Override
-	public String toString() {
-		return "PostVO [postId=" + postId + ", memberId=" + memberId + ", img=" + img + ", orgImg=" + orgImg
-				+ ", postContent=" + postContent + ", postDate=" + postDate + "]";
-	}
-	
-	
+    public void setCommentVO(CommentVO commentVO) {
+        this.commentVO = commentVO;
+    }
 
+    public static long getSerialversionuid() {
+        return serialVersionUID;
+    }
+
+    @Override
+    public String toString() {
+        return "PostVO [postId=" + postId + ", memberId=" + memberId + ", img=" + img + ", orgImg=" + orgImg
+                + ", postContent=" + postContent + ", postDate=" + postDate + ", commentVO=" + commentVO + "]";
+    }
 }

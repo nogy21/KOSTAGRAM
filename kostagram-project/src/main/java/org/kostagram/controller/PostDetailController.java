@@ -13,7 +13,6 @@ public class PostDetailController implements Controller {
 		String postId = request.getParameter("postId");
 	
 		PostVO postVO = PostDAO.getInstance().getPostDetail(postId);
-		//PostVO postVO = PostDAO.getInstance().getPostId(postId);
 		request.setAttribute("postVO", postVO);
 		
 		request.setAttribute("url", "post/detail-post.jsp");
