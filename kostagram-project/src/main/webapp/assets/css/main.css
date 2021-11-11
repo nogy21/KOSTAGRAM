@@ -31,6 +31,12 @@ section, summary, time, mark, audio, video {
    height : 50px;
 }
 
+#profile_img2{
+   border-radius: 70%;
+   width : 200px;
+   height : 200px;
+}
+
 #profile_name{
    margin-left: 17px;
    font-size: 17px;
@@ -102,10 +108,10 @@ body {
 	-webkit-text-size-adjust: none;
 }
 
-mark {
+/* mark {
 	background-color: transparent;
 	color: inherit;
-}
+} */
 
 /* input::-moz-focus-inner {
 	border: 0;
@@ -2420,6 +2426,9 @@ mark {
 /* Table */
 
 /* 	.table-wrapper {
+=======
+	/* .table-wrapper {
+>>>>>>> feature/main-view
 		-webkit-overflow-scrolling: touch;
 		overflow-x: auto;
 	}
@@ -2483,8 +2492,10 @@ mark {
 			table.alt tfoot {
 				border-top: 0;
 			}
+<<<<<<< HEAD
 
- *//* Button */
+ */
+/* Button */
 
 	/* input[type="submit"],
 	input[type="reset"],
@@ -2632,7 +2643,7 @@ mark {
 			-ms-transition: -ms-transform 0.5s ease, opacity 0.5s ease;
 			transition: transform 0.5s ease, opacity 0.5s ease;
 			position: relative;
-			width: calc(70% - 2.5em);
+			width: calc(30% - 2.5em);
 			margin: 2.5em 0 0 2.5em;
 		}
 
@@ -2694,7 +2705,7 @@ mark {
 					z-index: 2;
 				}
 
-			.tiles article > a {
+			/* .tiles article > a {
 				display: -moz-flex;
 				display: -webkit-flex;
 				display: -ms-flex;
@@ -2756,7 +2767,7 @@ mark {
 					.tiles article > a .content > :last-child {
 						margin-bottom: 0;
 					}
-			/*
+ */			/*
 			백그라운드 색상
 			
 			.tiles article.style1 > .image:before {
@@ -3225,7 +3236,7 @@ mark {
 
 /* Footer */
 
-	#footer {
+/* 	#footer {
 		padding: 5em 0 6em 0 ;
 		background-color: #f6f6f6;
 	}
@@ -3371,7 +3382,7 @@ mark {
 					}
 
 		}
-
+ */
 /* Wrapper */
 
 	#wrapper > * > .inner {

@@ -65,5 +65,7 @@ SELECT * FROM post WHERE member_id = 'java' and post_id = (select max(post_id) f
 
 SELECT * FROM post WHERE member_id = 'java' and post_id = (select max(post_id) from post where member_id = 'java');
 
+select * from POST_COMMENT;
+
 
 

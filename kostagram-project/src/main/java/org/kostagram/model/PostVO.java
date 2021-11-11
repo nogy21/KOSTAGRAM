@@ -10,7 +10,7 @@ public class PostVO implements Serializable{
 	private String orgImg;
 	private String postContent;
 	private String postDate;
-
+	private MemberVO memberVO;
 	private CommentVO commentVO;
 	
 	public PostVO() {
@@ -27,71 +27,117 @@ public class PostVO implements Serializable{
         this.postContent = postContent;
         this.postDate = postDate;
         this.commentVO = commentVO;
+        
     }
 
-    public int getPostId() {
-        return postId;
-    }
+	public PostVO(int postId, String memberId, String img, String orgImg, String postContent, String postDate,
+			MemberVO memberVO) {
+		super();
+		this.postId = postId;
+		this.memberId = memberId;
+		this.img = img;
+		this.orgImg = orgImg;
+		this.postContent = postContent;
+		this.postDate = postDate;
+		this.memberVO = memberVO;
+	}
 
-    public void setPostId(int postId) {
-        this.postId = postId;
-    }
+	public PostVO(int postId, String memberId, String img, String orgImg, String postContent, String postDate) {
+		super();
+		this.postId = postId;
+		this.memberId = memberId;
+		this.img = img;
+		this.orgImg = orgImg;
+		this.postContent = postContent;
+		this.postDate = postDate;
+	}
 
-    public String getMemberId() {
-        return memberId;
-    }
+	public PostVO(int postId, String memberId, String img, String orgImg, String postContent, String postDate,
+			MemberVO memberVO, CommentVO commentVO) {
+		super();
+		this.postId = postId;
+		this.memberId = memberId;
+		this.img = img;
+		this.orgImg = orgImg;
+		this.postContent = postContent;
+		this.postDate = postDate;
+		this.memberVO = memberVO;
+		this.commentVO = commentVO;
+	}
 
-    public void setMemberId(String memberId) {
-        this.memberId = memberId;
-    }
+	public int getPostId() {
+		return postId;
+	}
 
-    public String getImg() {
-        return img;
-    }
+	public void setPostId(int postId) {
+		this.postId = postId;
+	}
 
-    public void setImg(String img) {
-        this.img = img;
-    }
+	public String getMemberId() {
+		return memberId;
+	}
 
-    public String getOrgImg() {
-        return orgImg;
-    }
+	public void setMemberId(String memberId) {
+		this.memberId = memberId;
+	}
 
-    public void setOrgImg(String orgImg) {
-        this.orgImg = orgImg;
-    }
+	public String getImg() {
+		return img;
+	}
 
-    public String getPostContent() {
-        return postContent;
-    }
+	public void setImg(String img) {
+		this.img = img;
+	}
 
-    public void setPostContent(String postContent) {
-        this.postContent = postContent;
-    }
+	public String getOrgImg() {
+		return orgImg;
+	}
 
-    public String getPostDate() {
-        return postDate;
-    }
+	public void setOrgImg(String orgImg) {
+		this.orgImg = orgImg;
+	}
 
-    public void setPostDate(String postDate) {
-        this.postDate = postDate;
-    }
+	public String getPostContent() {
+		return postContent;
+	}
 
-    public CommentVO getCommentVO() {
-        return commentVO;
-    }
+	public void setPostContent(String postContent) {
+		this.postContent = postContent;
+	}
 
-    public void setCommentVO(CommentVO commentVO) {
-        this.commentVO = commentVO;
-    }
+	public String getPostDate() {
+		return postDate;
+	}
 
-    public static long getSerialversionuid() {
-        return serialVersionUID;
-    }
+	public void setPostDate(String postDate) {
+		this.postDate = postDate;
+	}
 
-    @Override
-    public String toString() {
-        return "PostVO [postId=" + postId + ", memberId=" + memberId + ", img=" + img + ", orgImg=" + orgImg
-                + ", postContent=" + postContent + ", postDate=" + postDate + ", commentVO=" + commentVO + "]";
-    }
+	public MemberVO getMemberVO() {
+		return memberVO;
+	}
+
+	public void setMemberVO(MemberVO memberVO) {
+		this.memberVO = memberVO;
+	}
+
+	public CommentVO getCommentVO() {
+		return commentVO;
+	}
+
+	public void setCommentVO(CommentVO commentVO) {
+		this.commentVO = commentVO;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	@Override
+	public String toString() {
+		return "PostVO [postId=" + postId + ", memberId=" + memberId + ", img=" + img + ", orgImg=" + orgImg
+				+ ", postContent=" + postContent + ", postDate=" + postDate + ", memberVO=" + memberVO + ", commentVO="
+				+ commentVO + "]";
+	}
+	
 }

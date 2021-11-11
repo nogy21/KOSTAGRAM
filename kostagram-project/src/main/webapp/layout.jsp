@@ -4,7 +4,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<link rel="shortcut icon" type="image/x-icon" href="images/logo.png">
+<link rel="shortcut icon" type="image/x-icon" href="images/logo4.png">
 <title>KOSTAGRAM</title>
 <meta charset="utf-8">
 <meta name="viewport"

@@ -51,7 +51,7 @@ public class PostUploadController implements Controller {
         String serverDirectory = request.getServletContext().getRealPath("upload");
         // 로컬 경로 지정
         // 원래 코드 : String directory = "\\images\\";
-        String localDirectory = "C:\\Semi-project-git\\kostagram-project\\src\\main\\webapp\\images\\";
+        String localDirectory = "\\\\Mac\\Home\\Documents\\kosta\\kostagram-project\\src\\main\\webapp\\images";
         int maxSize = 1024 * 1024 * 100;
         String encoding = "utf-8";
         

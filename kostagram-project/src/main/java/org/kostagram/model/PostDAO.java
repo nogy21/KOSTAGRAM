@@ -28,25 +28,25 @@ public class PostDAO {
         if (con != null)
             con.close();
     }
-	public ArrayList<PostVO> mainPostList(String memberId) throws SQLException {
+     
+    public ArrayList<PostVO> mainPostList() throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		PostVO vo = null;
+		MemberVO mvo = null;
 		ArrayList<PostVO> list = new ArrayList<PostVO>();
-		
 		try {
 			con = dataSource.getConnection();
-			String postSql = "SELECT * FROM post WHERE member_id=?order by post_date desc";
+			String postSql = "select p.post_id,p.img,p.org_img,p.post_content,p.post_date,m.member_id,m.org_profile_img from post p,member m where p.member_id=m.member_id order by p.post_id desc";
 			pstmt = con.prepareStatement(postSql);
-			pstmt.setString(1, memberId);
 			rs = pstmt.executeQuery();
-			
 			while(rs.next()) {
-				vo = new PostVO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), null);
+				vo = new PostVO(rs.getInt(1), null, rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
+				mvo = new MemberVO(rs.getString(6),null,null,null,null,rs.getString(7),null,null);
+				vo.setMemberVO(mvo);
 				list.add(vo);
 			}
-			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -56,8 +56,8 @@ public class PostDAO {
 		
 		return list;
 	}
-	// 게시글 상세보기
-	public PostVO getPostDetail(String postId) throws SQLException {
+
+    public PostVO getPostDetail(String postId) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -65,7 +65,6 @@ public class PostDAO {
 		
 		try {
 			con = dataSource.getConnection();
-			// 댓글 join
 			String postSql = "SELECT * FROM post WHERE post_id = ?";
 			
 			pstmt = con.prepareStatement(postSql);
@@ -73,10 +72,9 @@ public class PostDAO {
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-			    // 수정 필요
-			    CommentVO cvo = new CommentVO();
-				vo = new PostVO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), cvo);
+				vo = new PostVO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6));
 			}
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -123,7 +121,7 @@ public class PostDAO {
             rs = pstmt.executeQuery();
             
             if(rs.next()) {
-                vo = new PostVO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), null);
+                vo = new PostVO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), null,null);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -133,3 +131,4 @@ public class PostDAO {
         return vo;
 	}
 }
+
