@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.sql.DataSource;
 
@@ -166,4 +167,30 @@ public class MemberDAO {
         }
         return result;
     }
+
+	// member 검색 메서드
+	public ArrayList<MemberVO> searchMemberByWord(String searchWord) throws SQLException {
+		ArrayList<MemberVO> searchMemberList=new ArrayList<MemberVO>();
+		String sqlSearchWord="%"+searchWord+"%"; 
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+			con=dataSource.getConnection();
+			String searchMemberSql="select * from member where member_id like ?";
+			pstmt=con.prepareStatement(searchMemberSql);
+			pstmt.setString(1, sqlSearchWord);
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				MemberVO mvo=new MemberVO();
+				mvo.setMemberId(rs.getString("member_id"));
+				mvo.setName(rs.getString("name"));
+				mvo.setProfileImgPath("org_profile_img");
+				searchMemberList.add(mvo);
+			}
+		} finally {
+			closeAll(rs, pstmt, con);
+		}
+		return searchMemberList;
+	}
  }
