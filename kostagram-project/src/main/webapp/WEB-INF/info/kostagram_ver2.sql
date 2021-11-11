@@ -9,6 +9,8 @@ CREATE TABLE member (
    register_date DATE NOT NULL
 );
 
+drop table member;
+
 CREATE TABLE post
 (
 	post_id NUMBER  PRIMARY KEY,
@@ -33,20 +35,23 @@ CREATE TABLE likes
 
 CREATE sequence likes_seq;
 
-CREATE TABLE comment
+CREATE TABLE post_comment
 (
 	comment_id NUMBER  PRIMARY KEY,
 	member_id VARCHAR2(100)  NOT NULL,
 	post_id  NUMBER  NOT NULL,
 	comment_date DATE NOT NULL,
+	comment_content CLOB NOT NULL,
 	constraint comment_member_fk foreign key(member_id) references member(member_id),
 	constraint comment_post_fk foreign key(post_id) references post(post_id)
 );
 
+drop table post_comment;
+
 CREATE sequence comment_seq;
 
 
-
+select * from comment;
 
 
 
