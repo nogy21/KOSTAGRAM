@@ -25,17 +25,42 @@ section, summary, time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;}
 
+#profile_img{
+   border-radius: 70%;
+   width : 50px;
+   height : 50px;
+}
+
+#profile_name{
+   margin-left: 17px;
+   font-size: 17px;
+}
+
+#main_profile{
+   border: none;
+}
+
+.menu_sticky{
+   display: inline-block;
+     position: sticky;
+     top: 30px;
+     width: 300px;
+}
+
+#main_font{
+   font-family: sans-serif;
+}
+
 .test {
 	margin:0 auto;
 	text-align:center;	
 }
 .btn-test {
-	background-color: #59b1eb;
-	border: 5px solid #59b1eb;
+	background-color: skyblue;
+	border: 5px solid skyblue;
 	color: black;
 	line-height: 30px;
 	border-radius: 4px;
-	
 }
 .btn-test:hover {
 	background-color: #59b1eb;
@@ -2865,7 +2890,7 @@ mark {
 	#header {
 		padding: 10px 30px;
 		margin: 10px;
-		background-color: white;
+		background-color: f5f6f7;
 	}
 
 		#header .logo {
@@ -3363,3 +3388,16 @@ mark {
 			}
 
 		}
+		
+.input-wrap{
+	width: 465px;
+	height:48px;
+	border: solid 1px;
+	background: white;
+}
+.input-section-wrap{
+	padding-top: 60px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
