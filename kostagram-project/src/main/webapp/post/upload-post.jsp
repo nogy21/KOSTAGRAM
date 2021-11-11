@@ -13,9 +13,9 @@
         <div align="center">
             <%-- <img style="width: 500px;" id="preview-image" src="<%=path%>${sessionScope.loginVO.profileImgPath}"><br> --%>
             <%-- <img id="" src="<%=path %>basic_profile.png"><br> --%>
-            <img style="width: 500px;" id="preview-image" src="images/gray-background.png"><br>
+            <img style="width: 500px;" id="preview-image" src="images/default-background-post-upload.png"><br><br>
             <input style="display: block;" type="file" name="file" id="input-image" required="required"> <br><br>
-            <textarea rows="8" cols="100" name="introduce" placeholder="내용을 입력하세요"></textarea>
+            <textarea rows="20" cols="100" name="introduce" placeholder="내용을 입력하세요"></textarea>
             <%-- ${sessionScope.loginVO.introduce} --%>
         </div>
     </div><br>
