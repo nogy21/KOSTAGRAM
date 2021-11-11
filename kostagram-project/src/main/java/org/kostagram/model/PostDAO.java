@@ -28,30 +28,27 @@ public class PostDAO {
         if (con != null)
             con.close();
     }
+ 
     
-    
-	public ArrayList<PostVO> mainPostList(String memberId) throws SQLException {
+	public ArrayList<PostVO> mainPostList() throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		PostVO vo = null;
+		PostVO pvo = null;
+		MemberVO mvo = null;
 		ArrayList<PostVO> list = new ArrayList<PostVO>();
-		
 		try {
 			con = dataSource.getConnection();
-			String postSql = "SELECT * FROM post WHERE member_id=?";
-			
+			String postSql = "select p.post_id,p.img,p.org_img,p.post_content,p.post_date,m.member_id,m.org_profile_img from post p,member m where p.member_id=m.member_id order by p.post_id desc";
 			pstmt = con.prepareStatement(postSql);
-			pstmt.setString(1, memberId);
 			rs = pstmt.executeQuery();
-			
 			while(rs.next()) {
-				vo = new PostVO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6));
-				list.add(vo);
+				pvo = new PostVO(rs.getInt(1), null, rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
+				mvo = new MemberVO(rs.getString(6),null,null,null,null,rs.getString(7),null,null);
+				pvo.setMemberVO(mvo);
+				list.add(pvo);
 			}
-			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			closeAll(rs, pstmt, con);
@@ -63,7 +60,7 @@ public class PostDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		PostVO vo = null;
+		PostVO pvo = null;
 		
 		try {
 			con = dataSource.getConnection();
@@ -74,16 +71,43 @@ public class PostDAO {
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				vo = new PostVO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6));
+				pvo = new PostVO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6));
 			}
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			closeAll(rs, pstmt, con);
 		}
 		
-		return vo;
+		return pvo;
+	}
+	public ArrayList<PostVO> surfpost() throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs= null;
+		PostVO pvo = null;
+		ArrayList<PostVO> list = new ArrayList<PostVO>();
+		
+		try {
+			con = dataSource.getConnection();
+			String surfpostSql = "select * from post";
+			
+			pstmt = con.prepareStatement(surfpostSql);
+			rs= pstmt.executeQuery();
+			
+			while(rs.next()) {
+				pvo = new PostVO(rs.getInt(1), null, null, rs.getString(4),null,null,null);
+				list.add(pvo);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeAll(rs, pstmt, con);
+		}		
+		return list;
 	}
 }
+
+
