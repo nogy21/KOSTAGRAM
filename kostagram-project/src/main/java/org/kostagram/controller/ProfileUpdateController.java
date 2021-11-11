@@ -23,7 +23,8 @@ public class ProfileUpdateController implements Controller {
         // String path = request.getContextPath();
         // String directory = request.getServletContext().getRealPath("/upload/");
         // 로컬 경로 지정
-        String directory = "\\images\\";
+        //String directory = "\\images\\";
+        String directory = "C:\\Semi-project-git\\kostagram-project\\src\\main\\webapp\\images\\";
         int maxSize = 1024 * 1024 * 100;
         String encoding = "utf-8";
     
@@ -35,6 +36,7 @@ public class ProfileUpdateController implements Controller {
         String fileRealName = multipartRequest.getFilesystemName("file");
         String introduce = multipartRequest.getParameter("introduce");
         MemberDAO.getInstance().updateProfile(fileName, fileRealName, introduce, memberId);
+        
         return "redirect:MainController.do";
     }
 }
