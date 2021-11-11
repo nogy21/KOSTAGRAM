@@ -4,7 +4,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<link rel="shortcut icon" type="image/x-icon" href="images/logo.png">
+<link rel="shortcut icon" type="image/x-icon" href="images/logo4.png">
 <title>KOSTAGRAM</title>
 <meta charset="utf-8">
 <meta name="viewport"
@@ -19,6 +19,7 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="assets/css/main.css" />
+<link rel="stylesheet" href="assets/css/sub.css">
 </head>
 <body class="is-preload">
 <%--헤더--%>

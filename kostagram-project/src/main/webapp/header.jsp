@@ -22,7 +22,7 @@
 	</c:choose>
 	<!-- Logo -->
 	<a href="MainController.do" class="logo"> <span class="symbol">
-			<img src="images/logo3.jpeg" alt="" />
+			<img src="images/logo4.png" alt="" />
 	</span> <span class="title">KOSTAGRAM</span>
 	</a>
 	<hr>

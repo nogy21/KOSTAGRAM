@@ -50,8 +50,8 @@ public class MemberDAO {
 		ResultSet rs = null;
 		try {
 			con = dataSource.getConnection();
-			String sql="select * from member where member_id=? and password=?";
-			pstmt = con.prepareStatement(sql);
+			String loginSql="select * from member where member_id=? and password=?";
+			pstmt = con.prepareStatement(loginSql);
 			pstmt.setString(1, id);
 			pstmt.setString(2, password);
 			rs = pstmt.executeQuery();
