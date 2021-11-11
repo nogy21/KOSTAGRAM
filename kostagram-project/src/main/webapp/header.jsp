@@ -12,20 +12,28 @@
 		</c:when>
 		<c:otherwise>
 			<div align="right">
-				<a href ="UpdateMemberFormController.do">회원정보수정</a>&nbsp;&nbsp;
-				<a href =>마이페이지</a>&nbsp;&nbsp;
-				${sessionScope.loginVO.memberId }님&nbsp;&nbsp;
-				 <a href="javascript:logout()">로그아웃</a>&nbsp;&nbsp;
+			<a href =>
+				<img src="images/post-update.png" width="55" height="35" alt="글쓰기" />
+			</a>&nbsp;&nbsp;
+			<a href ="MemberDetailFormController.do?memberid=${sessionScope.loginVO.memberId}">
+				<img src="images/myinfo.png" width="40" height="40" alt="마이페이지" />
+			</a>&nbsp;&nbsp;
+			<a href ="UpdateMemberFormController.do" style="text-decoration:none">
+				<img src="images/setting.png" width="50" height="50" alt="회원정보수정" />
+			</a>&nbsp;&nbsp;
+			<a href ="javascript:logout()" style="text-decoration:none">
+				 <img src="images/logout2.png" width="50" height="40" alt="로그아웃" />&nbsp;&nbsp;
+			</a>
         		<form action="LogoutController.do" method="post" id="logoutForm"></form>
 				</div>
 		</c:otherwise>
 	</c:choose>
 	<!-- Logo -->
 	<a href="MainController.do" class="logo"> <span class="symbol">
-			<img src="images/logo3.jpeg" alt="" />
+			<img src="images/logo4.png" alt="" />
 	</span> <span class="title">KOSTAGRAM</span>
 	</a>
-	<hr>
+	
 	<!--  Search -->
 	<form method="get">
 		<div align="center">
@@ -34,6 +42,7 @@
 			<button type="button" class="btn-test">검색</button>
 		</div>
 	</form>
+	<hr>
 </header>
 <script>
             function logout(){

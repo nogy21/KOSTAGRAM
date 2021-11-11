@@ -2,9 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- Main -->
-<div id="main">
-	<div class="inner">
-	
+	<div class="main-wrap">
 	<script type="text/javascript">
 		function loginAjax() {
 			let memberId = document.getElementById("memberId").value;
@@ -29,14 +27,23 @@
 			xhr.send("memberId="+memberId+"&password="+password);
 		}
 	</script>
-	
 		<form method="post">
-			<input type="text" id="memberId" name="memberId" placeholder="아이디" required="required"><br><br>
-			<input type="password" id="password" name="password" placeholder="비밀번호" required="required"><br><br>
-			<button type="button" onclick="loginAjax()">로그인</button><br><br>
-			<span id="loginCheckMessage"></span>
-			회원이 아니신가요? <a href="">회원가입</a>
+		<section class="input-section-wrap">
+			<h3>Login</h3>
+			<div class="input-wrap">
+				<input type="text" id="memberId" name="memberId" placeholder="아이디" required="required">
+			</div>
+			<br>
+			<div class="input-wrap">
+				<input type="password" id="password" name="password" placeholder="비밀번호" required="required">
+			</div>
+			<div class="button-wrap">
+				<button type="button" onclick="loginAjax()">로그인</button><br><br>
+			</div>
+			<span id="loginCheckMessage"></span><br>
+			<div class="button-wrap2"> 
+				회원이 아니신가요?&nbsp;&nbsp;<button type="button" onclick="location.href='RegisterFormController.do'">회원가입</button>
+			</div>
+			</section>
 		</form>
-		
 	</div>
-</div>

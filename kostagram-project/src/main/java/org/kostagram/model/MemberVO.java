@@ -16,7 +16,12 @@ public class MemberVO implements Serializable{
         super();
     }
     
-    public MemberVO(String memberId, String password, String email, String name, String registerDate) {
+    public MemberVO(String memberId) {
+		super();
+		this.memberId = memberId;
+	}
+
+	public MemberVO(String memberId, String password, String email, String name, String registerDate) {
         super();
         this.memberId = memberId;
         this.password = password;
