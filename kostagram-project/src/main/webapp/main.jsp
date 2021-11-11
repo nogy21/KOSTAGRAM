@@ -5,7 +5,7 @@
 String path = "images\\";
 %>
 <body>
-	<section class="tiles" onclick="location.href='PostDetailController.do?postId=${post.postId}'">
+	<section class="tiles">
 		<c:forEach items="${requestScope.postList }" var="post">
 			<article onclick="">
 				<img id="profile_img" src="<%=path%>${post.memberVO.profileImgPath}" alt="Cinque Terre">

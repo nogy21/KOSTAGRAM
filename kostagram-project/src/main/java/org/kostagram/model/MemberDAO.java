@@ -51,8 +51,8 @@ public class MemberDAO {
 		ResultSet rs = null;
 		try {
 			con = dataSource.getConnection();
-			String sql="select * from member where member_id=? and password=?";
-			pstmt = con.prepareStatement(sql);
+			String loginSql="select * from member where member_id=? and password=?";
+			pstmt = con.prepareStatement(loginSql);
 			pstmt.setString(1, id);
 			pstmt.setString(2, password);
 			rs = pstmt.executeQuery();
@@ -167,6 +167,7 @@ public class MemberDAO {
         }
         return result;
     }
+
     public ArrayList<MemberVO> getMemberDetail(String id) throws SQLException {
     	Connection con = null;
     	PreparedStatement pstmt = null;
@@ -211,5 +212,30 @@ public class MemberDAO {
 			closeAll(rs, pstmt, con);
 		}
 		return list;
+    }
+	// member 검색 메서드
+	public ArrayList<MemberVO> searchMemberByWord(String searchWord) throws SQLException {
+		ArrayList<MemberVO> searchMemberList=new ArrayList<MemberVO>();
+		String sqlSearchWord="%"+searchWord+"%"; 
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+			con=dataSource.getConnection();
+			String searchMemberSql="select * from member where member_id like ?";
+			pstmt=con.prepareStatement(searchMemberSql);
+			pstmt.setString(1, sqlSearchWord);
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				MemberVO mvo=new MemberVO();
+				mvo.setMemberId(rs.getString("member_id"));
+				mvo.setName(rs.getString("name"));
+				mvo.setProfileImgPath("org_profile_img");
+				searchMemberList.add(mvo);
+			}
+		} finally {
+			closeAll(rs, pstmt, con);
+		}
+		return searchMemberList;
 	}
  }

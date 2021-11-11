@@ -10,26 +10,30 @@ import javax.sql.DataSource;
 
 public class PostDAO {
 	private static PostDAO instance = new PostDAO();
-    private DataSource dataSource;
-    private PostDAO() {
-        this.dataSource = DataSourceManager.getInstance().getDataSource();
-    }
-    public static PostDAO getInstance() {
-        return instance;
-    }
-    public void closeAll(ResultSet rs, PreparedStatement pstmt, Connection con) throws SQLException {
-        if (rs != null)
-            rs.close();
-        closeAll(pstmt, con);
-    }
-    public void closeAll(PreparedStatement pstmt, Connection con) throws SQLException {
-        if (pstmt != null)
-            pstmt.close();
-        if (con != null)
-            con.close();
-    }
-     
-    public ArrayList<PostVO> mainPostList() throws SQLException {
+	private DataSource dataSource;
+
+	private PostDAO() {
+		this.dataSource = DataSourceManager.getInstance().getDataSource();
+	}
+
+	public static PostDAO getInstance() {
+		return instance;
+	}
+
+	public void closeAll(ResultSet rs, PreparedStatement pstmt, Connection con) throws SQLException {
+		if (rs != null)
+			rs.close();
+		closeAll(pstmt, con);
+	}
+
+	public void closeAll(PreparedStatement pstmt, Connection con) throws SQLException {
+		if (pstmt != null)
+			pstmt.close();
+		if (con != null)
+			con.close();
+	}
+
+	public ArrayList<PostVO> mainPostList() throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -84,6 +88,7 @@ public class PostDAO {
 		
 		return vo;
 	}
+		
 	//포스트 업로드 메서드
 	public void uploadPost(String fileName, String fileRealName, String postContent, String memberId) throws SQLException {
 	    Connection con = null;
@@ -130,5 +135,62 @@ public class PostDAO {
         }
         return vo;
 	}
-}
 
+	// 포스트 삭제 메서드
+	public void deletePostByNo(int postId) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {
+			con = dataSource.getConnection();
+			String deletePostByNoSql = "delete from post where post_id=?";
+			pstmt = con.prepareStatement(deletePostByNoSql);
+			pstmt.setInt(1, postId);
+			pstmt.executeUpdate();
+		} finally {
+			closeAll(pstmt, con);
+		}
+	} // deletePostByNo()
+	
+	// 포스트 수정 메서드
+	public void updatePostByNo(PostVO postVO) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {
+			con = dataSource.getConnection();
+			String updatePostByNoSql = "update post set post_content=? where post_id=?";
+			pstmt = con.prepareStatement(updatePostByNoSql);
+			pstmt.setString(1, postVO.getPostContent());
+			pstmt.setInt(2, postVO.getPostId());
+			pstmt.executeUpdate();
+		} finally {
+			closeAll(pstmt, con);
+		}
+	} //updatePostByNo()
+	
+	// post 검색 메서드
+		public ArrayList<PostVO> searchMemberByWord(String searchWord) throws SQLException {
+			ArrayList<PostVO> searchPostList=new ArrayList<PostVO>();
+			String sqlSearchWord="%"+searchWord+"%"; 
+			Connection con=null;
+			PreparedStatement pstmt=null;
+			ResultSet rs=null;
+			try {
+				con=dataSource.getConnection();
+				String searchPostSql="select * from post where post_content like ?";
+				pstmt=con.prepareStatement(searchPostSql);
+				pstmt.setString(1, sqlSearchWord);
+				rs=pstmt.executeQuery();
+				while(rs.next()) {
+					PostVO pvo=new PostVO();
+					pvo.setPostId(rs.getInt("post_id"));
+					System.out.println(rs.getInt("post_id"));
+					pvo.setOrgImg(rs.getString("org_img"));
+					pvo.setPostContent(rs.getString("post_content"));
+					searchPostList.add(pvo);
+				}
+			} finally {
+				closeAll(rs, pstmt, con);
+			}
+			return searchPostList;
+		}
+}
