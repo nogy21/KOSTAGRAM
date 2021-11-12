@@ -1,5 +1,6 @@
 package org.kostagram.controller;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -11,7 +12,10 @@ public class UpdateMemberController implements Controller {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String memberId = request.getParameter("memberId");
+	    if (request.getMethod().equals("POST") == false) {
+            throw new ServletException("게시글 수정은 post 방식만 허용됩니다");
+        }
+	    String memberId = request.getParameter("memberId");
 		String email = request.getParameter("email");
 		String name = request.getParameter("name");
 		
