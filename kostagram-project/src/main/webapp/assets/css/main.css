@@ -51,6 +51,24 @@ section, summary, time, mark, audio, video {
    font-family: sans-serif;
 }
 
+#detail_img{
+	width : 60%;
+	margin: 0 auto;
+}
+
+#detail_div{
+	margin: 0 auto;
+}
+
+#heart{
+	width : 70%;
+}
+
+#like_table{
+	width : 20%;
+	margin-bottom: 50px;
+}
+
 .test {
 	margin:0 auto;
 	text-align:center;	
@@ -93,10 +111,10 @@ blockquote, q {
 		content: none;
 	}
 
-table {
+/* table {
 	border-collapse: collapse;
 	border-spacing: 0;
-}
+} */
 
 body {
 	-webkit-text-size-adjust: none;
@@ -2419,7 +2437,7 @@ mark {
 
 /* Table */
 
-	.table-wrapper {
+	/* .table-wrapper {
 		-webkit-overflow-scrolling: touch;
 		overflow-x: auto;
 	}
@@ -2484,7 +2502,8 @@ mark {
 				border-top: 0;
 			}
 
-/* Button */
+ */
+ /* Button */
 
 	/* input[type="submit"],
 	input[type="reset"],

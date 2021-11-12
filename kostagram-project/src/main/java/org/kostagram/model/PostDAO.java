@@ -63,7 +63,8 @@ public class PostDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		PostVO vo = null;
+		PostVO postVO = null;
+		MemberVO memberVO = null;
 		
 		try {
 			con = dataSource.getConnection();
@@ -74,7 +75,7 @@ public class PostDAO {
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				vo = new PostVO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6));
+				postVO = new PostVO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), memberVO);
 			}
 			
 		} catch (SQLException e) {
@@ -84,6 +85,62 @@ public class PostDAO {
 			closeAll(rs, pstmt, con);
 		}
 		
-		return vo;
+		return postVO;
+	}
+	
+	public MemberVO getMemberInfo(String memberId) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		MemberVO memberVO = null;
+		
+		try {
+			con = dataSource.getConnection();
+			String memberSql = "SELECT * FROM member WHERE member_id=?";
+			
+			pstmt = con.prepareStatement(memberSql);
+			pstmt.setString(1, memberId);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				memberVO = new MemberVO(rs.getString(1), null, rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8));
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeAll(rs, pstmt, con);
+		}
+		
+		return memberVO;
+	}
+	
+	public int likeCount(String postId) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int count = 0;
+		
+		try {
+			con = dataSource.getConnection();
+			String countSql = "SELECT COUNT(*) FROM likes WHERE post_id=?";
+			
+			pstmt = con.prepareStatement(countSql);
+			pstmt.setString(1, postId);
+			
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				count = rs.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeAll(rs, pstmt, con);
+		}
+		
+		return count;
 	}
 }
