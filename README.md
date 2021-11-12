@@ -1,11 +1,24 @@
 # KOSTAGRAM(코스타그램)
 <p align="center"><img src="https://user-images.githubusercontent.com/88620416/141291035-e2215d44-8d4e-444a-9315-5c2a83adfaac.png"></p>
 
-## 프로젝트 개요
+## 🚀 프로젝트 개요
+### 프로젝트명 : KOSTAGRAM
 - 사용자간의 자유로운 의사소통과 정보공유를 위한 커뮤니티 프로젝트입니다.
 - 개개인을 브랜딩화하여 일상을 공유하고 사회적 관계를 생성 및 강화시키는 것에 목적을 두고 있습니다.
+- 그동안 교육을 통해 배웠던 내용들을 복습하고, 기획부터 구현, 유지보수의 모든 과정을 경험해보는 프로젝트입니다.
 
-## 회의록
+### 팀 이름 : Koverloper
+- Kosta가 키운 유능한 개발자들
+
+### 팀원 및 구현 기능
+- `양성원` / [SeongWon Yang](https://github.com/seongwonyang) : 메인개발자 및 팀장<br>
+- `신유라` / [Youra Shin](https://github.com/diverJenny) : 메인개발자
+- `이 용` / [nogy21](https://github.com/nogy21) : 메일개발자
+- `이주형` / [juhyung96](https://github.com/juhyung96) : 메일개발자
+- `임지원` / [zheld12](https://github.com/zheld12) : 메일개발자
+- `김서연` / [westkitekim](https://github.com/westkitekim) : 메일개발자
+
+## 🚀 회의록
 - [2021.11.04 4차 회의록](https://github.com/diverJenny/KOSTAGRAM/wiki/2021.11.04)
 - [2021.11.05 5차 회의록](https://github.com/diverJenny/KOSTAGRAM/wiki/2021.11.05)
 - [2021.11.07(일) 6차 회의록](https://github.com/diverJenny/KOSTAGRAM/wiki/2021.11.07(%EC%9D%BC)-%ED%9A%8C%EC%9D%98%EB%A1%9D)
@@ -14,11 +27,11 @@
 - [2021.11.10(수) 9차 회의록](https://github.com/diverJenny/KOSTAGRAM/wiki/2021.11.10(%EC%88%98)-%ED%9A%8C%EC%9D%98%EB%A1%9D)
 - [2021.11.11(목) 10차 회의록](https://github.com/diverJenny/KOSTAGRAM/wiki/2021.11.11(%EB%AA%A9)-%ED%9A%8C%EC%9D%98%EB%A1%9D)
 
-## 개발기간
+## 🚀 개발기간
 - 프로젝트 수행 기간  
 2021.11.01 ~ 2021.11.12
 
-## 개발환경 및 적용기술 
+## 🚀 개발환경 및 적용기술 
 <img src="http://img.shields.io/badge/-git-black?&logo=git"><br>
 <img src="http://img.shields.io/badge/-github-black?&logo=github"><br>
 <img src="https://img.shields.io/badge/java-v1.8-007396?logo=java"><br>
@@ -32,15 +45,9 @@
 <img src="https://img.shields.io/badge/Eclipse IDE-v4-2C2255?logo=Eclipse IDE"><br>
 <img src="https://img.shields.io/badge/Trello--0052CC?logo=Trello"><br>
 
-## 구성원 및 구현 기능
-- `양성원` / [SeongWon Yang](https://github.com/seongwonyang) : 메인개발자 및 팀장<br>
-- `신유라` / [Youra Shin](https://github.com/diverJenny) : 메인개발자
-- `이 용` / [nogy21](https://github.com/nogy21)
-- `이주형` / [juhyung96](https://github.com/juhyung96)
-- `임지원` / [zheld12](https://github.com/zheld12)
-- `김서연` / [westkitekim](https://github.com/westkitekim)
 
-## 요구사항
+
+## 🚀 요구사항
 
 ### 1차 구현 
   - 메인페이지
@@ -100,6 +107,6 @@
   - 포스트 
     - 위치등록 : 게시물 업로드 시 위치등록이 가능하다.
 
-## 트러블슈팅
+## 🚀 트러블슈팅
 
-## 개발 프로세스 및 설계
+## 🚀 개발 프로세스 및 설계
