@@ -62,6 +62,24 @@ section, summary, time, mark, audio, video {
    font-family: sans-serif;
 }
 
+#detail_img{
+   width : 60%;
+   margin: 0 auto;
+}
+
+#detail_div{
+   margin: 0 auto;
+}
+
+#heart{
+   width : 70%;
+}
+
+#like_table{
+   width : 20%;
+   margin-bottom: 50px;
+}
+
 .test {
 	margin:0 auto;
 	text-align:center;	
@@ -2687,7 +2705,7 @@ body {
 					opacity: 0.8;
 				}
 /*
- 타일 x선
+ ���씪 x�꽑
 */
 				.tiles article > .image:after {
 					pointer-events: none;
@@ -2702,7 +2720,7 @@ body {
 					left: 0;
 					width: 100%;
 					height: 100%;
-					/*x선 background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cstyle%3Eline %7B stroke-width: 0.25px%3B stroke: %23ffffff%3B %7D%3C/style%3E%3Cline x1='0' y1='0' x2='100' y2='100' /%3E%3Cline x1='100' y1='0' x2='0' y2='100' /%3E%3C/svg%3E");*/
+					/*x�꽑 background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cstyle%3Eline %7B stroke-width: 0.25px%3B stroke: %23ffffff%3B %7D%3C/style%3E%3Cline x1='0' y1='0' x2='100' y2='100' /%3E%3Cline x1='100' y1='0' x2='0' y2='100' /%3E%3C/svg%3E");*/
 					background-position: center;
 					background-repeat: no-repeat;
 					background-size: 100% 100%;
@@ -2773,7 +2791,7 @@ body {
 						margin-bottom: 0;
 					}
  */			/*
-			백그라운드 색상
+			諛깃렇�씪�슫�뱶 �깋�긽
 			
 			.tiles article.style1 > .image:before {
 				background-color: #f2849e;
@@ -2800,7 +2818,7 @@ body {
 				background-color: #8499e7;
 			}
 /*
-마우스 포인트 올렸을때 증가
+留덉슦�뒪 �룷�씤�듃 �삱�졇�쓣�븣 利앷�
 */
 			/* body:not(.is-touch) .tiles article:hover > .image {
 				-moz-transform: scale(1.1);
@@ -2809,7 +2827,7 @@ body {
 				transform: scale(1.1);
 			} */
 /*
-마우스 포인트 올렸을때 색상 변경
+留덉슦�뒪 �룷�씤�듃 �삱�졇�쓣�븣 �깋�긽 蹂�寃�
 */
 				body:not(.is-touch) .tiles article:hover > .image:before {
 					background-color: #333333;
@@ -2925,11 +2943,11 @@ body {
 				display: inline-block;
 				vertical-align: middle;
 			}
-/*로고와 타이틀 거리간격 조정*/
+/*濡쒓퀬�� ���씠�� 嫄곕━媛꾧꺽 議곗젙*/
 			#header .logo .symbol {
 				margin-right: 0.65em;
 			}
-/*로고 크기 조정*/
+/*濡쒓퀬 �겕湲� 議곗젙*/
 				#header .logo .symbol img {
 					display: block;
 					width: 7em;

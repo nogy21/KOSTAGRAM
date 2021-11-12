@@ -48,6 +48,7 @@ public class LikeDAO {
 			closeAll(pstmt, con);
 		}
 	}
+	
 	public boolean liked(String memberId, String postId) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -75,6 +76,7 @@ public class LikeDAO {
 		
 		return didLike;
 	}
+	
 	public void unLikePost(String memberId, String postId) throws SQLException {
 		 Connection con = null;
 		 PreparedStatement pstmt = null;

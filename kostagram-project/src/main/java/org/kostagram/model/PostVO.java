@@ -32,7 +32,6 @@ public class PostVO implements Serializable{
 
 	public PostVO(int postId, String memberId, String img, String orgImg, String postContent, String postDate,
 			MemberVO memberVO) {
-		super();
 		this.postId = postId;
 		this.memberId = memberId;
 		this.img = img;
@@ -51,6 +50,8 @@ public class PostVO implements Serializable{
 		this.postContent = postContent;
 		this.postDate = postDate;
 	}
+	
+
 
 	public PostVO(int postId, String memberId, String img, String orgImg, String postContent, String postDate,
 			MemberVO memberVO, CommentVO commentVO) {
@@ -64,6 +65,7 @@ public class PostVO implements Serializable{
 		this.memberVO = memberVO;
 		this.commentVO = commentVO;
 	}
+	
 
 	public int getPostId() {
 		return postId;
@@ -141,3 +143,4 @@ public class PostVO implements Serializable{
 	}
 	
 }
+

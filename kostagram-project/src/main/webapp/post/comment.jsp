@@ -100,7 +100,8 @@
 	            }
 	            $("#comment-list").html(html);
 	        }, error:function(request,status,error){
- 	            alert("fail");
+ 	            //alert("fail");
+ 	            console.log("에러를 확인하세요.");
 	        }
 	    });
     }

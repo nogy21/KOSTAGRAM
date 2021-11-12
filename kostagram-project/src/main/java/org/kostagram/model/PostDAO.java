@@ -61,11 +61,12 @@ public class PostDAO {
 		return list;
 	}
 
-    public PostVO getPostDetail(String postId) throws SQLException {
+	public PostVO getPostDetail(String postId) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		PostVO vo = null;
+		PostVO postVO = null;
+		MemberVO memberVO = null;
 		
 		try {
 			con = dataSource.getConnection();
@@ -76,7 +77,7 @@ public class PostDAO {
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				vo = new PostVO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6));
+				postVO = new PostVO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), memberVO);
 			}
 			
 		} catch (SQLException e) {
@@ -86,7 +87,7 @@ public class PostDAO {
 			closeAll(rs, pstmt, con);
 		}
 		
-		return vo;
+		return postVO;
 	}
 		
 	//포스트 업로드 메서드
@@ -168,55 +169,113 @@ public class PostDAO {
 	} //updatePostByNo()
 	
 	// post 검색 메서드
-		public ArrayList<PostVO> searchMemberByWord(String searchWord) throws SQLException {
-			ArrayList<PostVO> searchPostList=new ArrayList<PostVO>();
-			String sqlSearchWord="%"+searchWord+"%"; 
-			Connection con=null;
-			PreparedStatement pstmt=null;
-			ResultSet rs=null;
-			try {
-				con=dataSource.getConnection();
-				String searchPostSql="select * from post where post_content like ?";
-				pstmt=con.prepareStatement(searchPostSql);
-				pstmt.setString(1, sqlSearchWord);
-				rs=pstmt.executeQuery();
-				while(rs.next()) {
-					PostVO pvo=new PostVO();
-					pvo.setPostId(rs.getInt("post_id"));
-					System.out.println(rs.getInt("post_id"));
-					pvo.setOrgImg(rs.getString("org_img"));
-					pvo.setPostContent(rs.getString("post_content"));
-					searchPostList.add(pvo);
-				}
-			} finally {
-				closeAll(rs, pstmt, con);
+	public ArrayList<PostVO> searchMemberByWord(String searchWord) throws SQLException {
+		ArrayList<PostVO> searchPostList=new ArrayList<PostVO>();
+		String sqlSearchWord="%"+searchWord+"%"; 
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+			con=dataSource.getConnection();
+			String searchPostSql="select * from post where post_content like ?";
+			pstmt=con.prepareStatement(searchPostSql);
+			pstmt.setString(1, sqlSearchWord);
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				PostVO pvo=new PostVO();
+				pvo.setPostId(rs.getInt("post_id"));
+				System.out.println(rs.getInt("post_id"));
+				pvo.setOrgImg(rs.getString("org_img"));
+				pvo.setPostContent(rs.getString("post_content"));
+				searchPostList.add(pvo);
 			}
-			return searchPostList;
+		} finally {
+			closeAll(rs, pstmt, con);
 		}
-		public ArrayList<PostVO> surfpost() throws SQLException {
-			Connection con = null;
-			PreparedStatement pstmt = null;
-			ResultSet rs= null;
-			PostVO pvo = null;
-			ArrayList<PostVO> list = new ArrayList<PostVO>();
-			
-			try {
-				con = dataSource.getConnection();
-				String surfpostSql = "select * from post";
-				
-				pstmt = con.prepareStatement(surfpostSql);
-				rs= pstmt.executeQuery();
-				
-				while(rs.next()) {
-					pvo = new PostVO(rs.getInt(1), null, null, rs.getString(4), null, null, null, null);
-					list.add(pvo);
-				}
-				
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} finally {
-				closeAll(rs, pstmt, con);
-			}		
-			return list;
-		}
+		return searchPostList;
 	}
+	
+	public ArrayList<PostVO> surfpost() throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs= null;
+		PostVO pvo = null;
+		ArrayList<PostVO> list = new ArrayList<PostVO>();
+		
+		try {
+			con = dataSource.getConnection();
+			String surfpostSql = "select * from post";
+			
+			pstmt = con.prepareStatement(surfpostSql);
+			rs= pstmt.executeQuery();
+			
+			while(rs.next()) {
+				pvo = new PostVO(rs.getInt(1), null, null, rs.getString(4), null, null, null, null);
+				list.add(pvo);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeAll(rs, pstmt, con);
+		}		
+		return list;
+	}
+	
+	public MemberVO getMemberInfo(String memberId) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		MemberVO memberVO = null;
+		
+		try {
+			con = dataSource.getConnection();
+			String memberSql = "SELECT * FROM member WHERE member_id=?";
+			
+			pstmt = con.prepareStatement(memberSql);
+			pstmt.setString(1, memberId);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				memberVO = new MemberVO(rs.getString(1), null, rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8));
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeAll(rs, pstmt, con);
+		}
+		
+		return memberVO;
+	}
+	
+	public int likeCount(String postId) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int count = 0;
+		
+		try {
+			con = dataSource.getConnection();
+			String countSql = "SELECT COUNT(*) FROM likes WHERE post_id=?";
+			
+			pstmt = con.prepareStatement(countSql);
+			pstmt.setString(1, postId);
+			
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				count = rs.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeAll(rs, pstmt, con);
+		}
+		
+		return count;
+	}
+		
+}

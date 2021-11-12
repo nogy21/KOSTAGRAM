@@ -15,7 +15,7 @@ String path = "images\\";
 		</div>
 		<div class="col-sm-2">
 		<c:forEach items="${requestScope.memberDetail }" var="detail">
-				<img id="profile_img2" src="<%=path%>${detail.profileImgPath}" alt="Cinque Terre">
+				<img id="profile_img2" src="<%=path%>${detail.profileImgPath}" alt="Cinque Terre" onerror="this.src='images/basic_profile.png';">
 			</c:forEach>
 		</div>
 		<div class="col-sm-8">
@@ -34,12 +34,13 @@ String path = "images\\";
 </header>
 <hr>
 <body>
-	<section class="tiles"
-		onclick="location.href='PostDetailController.do?postId=${post.postId}'">
+	<section class="tiles">
 		<c:forEach items="${requestScope.myPost }" var="post">
 			<article onclick="">
-				<span class="image"> <img src="images/${post.orgImg }" alt="" />
-				</span> <a href="PostDetailController.do?postId=${post.postId}"> </a><br>
+				<a href="PostDetailController.do?postId=${post.postId}">
+					<span class="image"> <img src="images/${post.orgImg }" alt="" /></span>
+				</a>
+				<br>
 				<p id="main_font">${post.postDate }| 좋아요 ♡ 3개</p>
 				<p id="main_font">${post.postContent }</p>
 			</article>

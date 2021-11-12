@@ -17,9 +17,7 @@ public class CommentWriteController implements Controller {
         }
         HttpSession session = request.getSession(false);
         MemberVO mvo = (MemberVO) session.getAttribute("loginVO");
-        if (mvo == null) {
-            return "redirect:MainController.do";
-        }
+        
         String memberId = mvo.getMemberId();
         int postId = Integer.parseInt(request.getParameter("postId"));
         String commentContent = request.getParameter("commentContent");

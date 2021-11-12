@@ -18,16 +18,18 @@ public class LikesController implements Controller {
 		
 		ArrayList<String> list = new ArrayList<String>();
 		
-		int countLikes = LikeDAO.getInstance().likecnt(postId);
+		int countLikes = 0;
 		
 		if(didLike==false) {
 			LikeDAO.getInstance().likePost(memberId,postId);
-			list.add("좋아요취소");
+			countLikes = LikeDAO.getInstance().likecnt(postId);
+			list.add("좋아요추가");
 			list.add(Integer.toString(countLikes));
 			request.setAttribute("responsebody", list);
 		}else if(didLike==true) {
 			LikeDAO.getInstance().unLikePost(memberId, postId);
-			list.add("좋아요추가");
+			countLikes = LikeDAO.getInstance().likecnt(postId);
+			list.add("좋아요취소");
 			list.add(Integer.toString(countLikes));
 			request.setAttribute("responsebody", list);
 		}
