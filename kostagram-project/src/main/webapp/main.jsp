@@ -9,7 +9,7 @@ String path = "images\\";
 </div>
 <div class="col-sm-4">
 		<c:forEach items="${requestScope.postList }" var="post">
-				<img id="profile_img" src="<%=path%>${post.memberVO.profileImgPath}" alt="Cinque Terre">
+				<img id="profile_img" src="<%=path%>${post.memberVO.profileImgPath}" alt="Cinque Terre" onerror="this.src='images/basic_profile.png';">
 				<a href="MemberDetailFormController.do?memberid=${post.memberVO.memberId }" style="text-decoration:none">
 				<font size="15px">${post.memberVO.memberId }</font>
 				</a>
