@@ -5,26 +5,25 @@
 String path = "images\\";
 %>
 <div class="row">
-<div class="col-sm-4">
+<div class="col-sm-3">
 </div>
-<div class="col-sm-4">
+<div class="col-sm-5">
 		<c:forEach items="${requestScope.postList }" var="post">
 				<img id="profile_img" src="<%=path%>${post.memberVO.profileImgPath}" alt="Cinque Terre" onerror="this.src='images/basic_profile.png'">
 				<a href="MemberDetailFormController.do?memberid=${post.memberVO.memberId }" style="text-decoration:none">
 				<font size="15px">${post.memberVO.memberId }</font>
 				</a>
-				<hr> 
 				<span class="image">
 				<a href="PostDetailController.do?postId=${post.postId}">
 				 <img id="content_img" src="images/${post.orgImg }" alt="" />
 				 </a>
 				</span> <br>
-				<p id="main_font">${post.postDate }</p>
-				<p id="main_font">${post.postContent }</p>
+				<p >${post.postDate }</p>
+				<p >${post.postContent }</p>
 				<hr>
 		</c:forEach>
 		</div>
-		<div align="left">
+		<div align="center">
 		<div class="col-sm-4">
 		<div class="menu_sticky">
 				<h2>인기 유저</h2>

@@ -25,6 +25,17 @@ section, summary, time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;}
 
+@font-face {
+    font-family: 'Uiyeun';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105@1.1/Uiyeun.woff') format('woff');
+    font-weight: normal;
+    font-style: normal; 
+}
+body{
+	font-family: 'Uiyeun';
+	font-size: 35px;
+}
+
 #profile_img{
    border-radius: 70%;
    width : 50px;
@@ -2933,7 +2944,7 @@ body {
 			color: inherit;
 			font-weight: 900;
 			letter-spacing: 0.35em;
-			margin: 0 0 2.5em 0;
+			margin: 0 0 0 0;
 			text-decoration: none;
 			text-transform: uppercase;
 			display: inline-block;
@@ -2950,8 +2961,8 @@ body {
 /*濡쒓퀬 �겕湲� 議곗젙*/
 				#header .logo .symbol img {
 					display: block;
-					width: 7em;
-					height: 7em;
+					width: 2em;
+					height: 2em;
 				}
 
 		#header nav {

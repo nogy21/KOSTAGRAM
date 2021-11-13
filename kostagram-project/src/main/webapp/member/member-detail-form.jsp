@@ -38,10 +38,10 @@ String path = "images\\";
 		<c:forEach items="${requestScope.myPost }" var="post">
 			<article onclick="">
 				<a href="PostDetailController.do?postId=${post.postId}">
-					<span class="image"> <img src="images/${post.orgImg }" alt="" /></span>
+					<span class="image"> <img id="content_img" src="images/${post.orgImg }" alt="" /></span>
 				</a>
 				<br>
-				<p id="main_font">${post.postDate }| 좋아요 ♡ 3개</p>
+				<p id="main_font">${post.postDate }</p>
 				<p id="main_font">${post.postContent }</p>
 			</article>
 		</c:forEach>

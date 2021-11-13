@@ -44,11 +44,25 @@ public class PostUploadController implements Controller {
             System.out.println("포스트 요청 방식이 아닙니다");
             return "redirect:index.jsp";
         }
+        String serverDirectory = request.getServletContext().getRealPath("/upload/"); //폴더 경로
+        File Folder = new File(serverDirectory);
+
+        // 해당 디렉토리가 없을경우 디렉토리를 생성합니다.
+        if (!Folder.exists()) {
+           try{
+               Folder.mkdir(); //폴더 생성합니다.
+                } 
+                catch(Exception e){
+               e.getStackTrace();
+           }        
+              }
         MemberVO vo = (MemberVO)request.getSession().getAttribute("loginVO");
         String memberId = vo.getMemberId();
 
         // String path = request.getContextPath();
-        String serverDirectory = request.getServletContext().getRealPath("upload");
+		/*
+		 * String serverDirectory = request.getServletContext().getRealPath("upload");
+		 */
         // 로컬 경로 지정
         // 원래 코드 : String directory = "\\images\\";
         String localDirectory = "\\\\Mac\\Home\\Documents\\kosta\\kostagram-project\\src\\main\\webapp\\images";
@@ -73,7 +87,6 @@ public class PostUploadController implements Controller {
         //파일 새로고침 업로드 (Generic Page) 수정코드 
         //Upload는 post 방식, generic.jsp 포스트 디테일 페이지 이동시 querystring 으로 postId 값 전다 
         
-        System.out.println(postId);
         
         //request.setAttribute("postVO", postVO);
         request.setAttribute("postId", postId);

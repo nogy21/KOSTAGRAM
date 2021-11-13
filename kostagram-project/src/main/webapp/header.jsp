@@ -32,10 +32,12 @@
       </c:otherwise>
    </c:choose>
    <!-- Logo -->
+   <span>
    <a href="MainController.do" class="logo"> <span class="symbol">
          <img src="images/logo4.png" alt="" />
-   </span> <span class="title">KOSTAGRAM</span>
+   </span> <span class="title" >KOSTAGRAM</span>
    </a>
+   </span>
    
    <!--  Search -->
    <script type="text/javascript">

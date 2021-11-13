@@ -177,7 +177,7 @@ public class PostDAO {
 		ResultSet rs=null;
 		try {
 			con=dataSource.getConnection();
-			String searchPostSql="select * from post where post_content like ?";
+			String searchPostSql="select * from post p,member m where p.member_id=m.member_id and post_content like ?";
 			pstmt=con.prepareStatement(searchPostSql);
 			pstmt.setString(1, sqlSearchWord);
 			rs=pstmt.executeQuery();
@@ -187,6 +187,10 @@ public class PostDAO {
 				System.out.println(rs.getInt("post_id"));
 				pvo.setOrgImg(rs.getString("org_img"));
 				pvo.setPostContent(rs.getString("post_content"));
+				MemberVO mvo = new MemberVO();
+				mvo.setMemberId(rs.getString("member_id"));
+				mvo.setProfileImgPath(rs.getString("org_profile_img"));
+				pvo.setMemberVO(mvo);
 				searchPostList.add(pvo);
 			}
 		} finally {

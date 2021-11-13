@@ -10,10 +10,10 @@ String path = "images\\";
 			<article onclick="">
 				<span class="image"> 
 					<a href="PostDetailController.do?postId=${post.postId}">
-						<img src="images/${post.orgImg }" alt="" />
+						<img id="content_img" src="images/${post.orgImg }" alt="" />
 					</a><br>
 				</span> 
-				
+		
 			</article>
 		</c:forEach>
 	</section>

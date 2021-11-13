@@ -51,7 +51,6 @@
 					</tr>
 				</table>
 				<span class="image main" id="detail_img">
-					<hr>
 					<img src="images/${requestScope.postVO.orgImg }" alt="" />
 						<br><p>${requestScope.postVO.postDate }</p>
 						

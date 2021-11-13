@@ -17,8 +17,6 @@ public class CommentDeleteController implements Controller {
         int postId = Integer.parseInt(request.getParameter("delCmtPostId"));
         int commentId = Integer.parseInt(request.getParameter("deleteCommentForm"));
         CommentDAO.getInstance().deleteComment(commentId);
-        System.out.println(postId);
-        System.out.println(commentId);
         return "PostDetailController.do?postId="+postId;
     }
 

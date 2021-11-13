@@ -33,6 +33,7 @@ public class FrontControllerServlet extends HttpServlet {
        permitAllList.add("RegisterFormController");
        permitAllList.add("RegisterResultController");
        permitAllList.add("SearchController");
+       permitAllList.add("IdCheckController");
    }
    
    public boolean checkLogin(HttpServletRequest request, String command) {
