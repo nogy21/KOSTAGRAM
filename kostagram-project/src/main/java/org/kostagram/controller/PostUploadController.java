@@ -18,7 +18,7 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 public class PostUploadController implements Controller {
-    //파일 새로고침시 copyAndPaste 메서드
+    //서버 새로고침시 이미지파일 유지를 위해 Stream을 적용한 메서드
     public void copyAndPasteFile(String orgFilePath, String localFilepath, String fileName) throws IOException {
         BufferedInputStream bis=null;
         BufferedOutputStream bos=null; 
@@ -44,10 +44,12 @@ public class PostUploadController implements Controller {
             System.out.println("포스트 요청 방식이 아닙니다");
             return "redirect:index.jsp";
         }
-        String serverDirectory = request.getServletContext().getRealPath("/upload/"); //폴더 경로
+        //원래코드 : String serverDirectory = request.getServletContext().getRealPath("upload");
+        //인자값 upload, /upload/ 모두 가능?
+        String serverDirectory = request.getServletContext().getRealPath("/upload/"); //서버 폴더 경로
         File Folder = new File(serverDirectory);
 
-        // 해당 디렉토리가 없을경우 디렉토리를 생성합니다.
+        // upload 디렉토리가 없을경우 디렉토리를 생성합니다.
         if (!Folder.exists()) {
            try{
                Folder.mkdir(); //폴더 생성합니다.
@@ -55,16 +57,14 @@ public class PostUploadController implements Controller {
                 catch(Exception e){
                e.getStackTrace();
            }        
-              }
+        }
         MemberVO vo = (MemberVO)request.getSession().getAttribute("loginVO");
         String memberId = vo.getMemberId();
 
-        // String path = request.getContextPath();
-		/*
-		 * String serverDirectory = request.getServletContext().getRealPath("upload");
-		 */
         // 로컬 경로 지정
         // 원래 코드 : String directory = "\\images\\";
+        
+        //★★★ localDirectory 는 각 팀원별 디렉토리로 수정하여 실행할 것!! 
         String localDirectory = "\\\\Mac\\Home\\Documents\\kosta\\kostagram-project\\src\\main\\webapp\\images";
         int maxSize = 1024 * 1024 * 100;
         String encoding = "utf-8";
