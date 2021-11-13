@@ -10,10 +10,35 @@ public class PostVO implements Serializable{
 	private String orgImg;
 	private String postContent;
 	private String postDate;
+	private MemberVO memberVO;
+	private CommentVO commentVO;
 	
 	public PostVO() {
 		super();
-		// TODO Auto-generated constructor stub
+	}
+
+    public PostVO(int postId, String memberId, String img, String orgImg, String postContent, String postDate,
+            CommentVO commentVO) {
+        super();
+        this.postId = postId;
+        this.memberId = memberId;
+        this.img = img;
+        this.orgImg = orgImg;
+        this.postContent = postContent;
+        this.postDate = postDate;
+        this.commentVO = commentVO;
+        
+    }
+
+	public PostVO(int postId, String memberId, String img, String orgImg, String postContent, String postDate,
+			MemberVO memberVO) {
+		this.postId = postId;
+		this.memberId = memberId;
+		this.img = img;
+		this.orgImg = orgImg;
+		this.postContent = postContent;
+		this.postDate = postDate;
+		this.memberVO = memberVO;
 	}
 
 	public PostVO(int postId, String memberId, String img, String orgImg, String postContent, String postDate) {
@@ -25,6 +50,22 @@ public class PostVO implements Serializable{
 		this.postContent = postContent;
 		this.postDate = postDate;
 	}
+	
+
+
+	public PostVO(int postId, String memberId, String img, String orgImg, String postContent, String postDate,
+			MemberVO memberVO, CommentVO commentVO) {
+		super();
+		this.postId = postId;
+		this.memberId = memberId;
+		this.img = img;
+		this.orgImg = orgImg;
+		this.postContent = postContent;
+		this.postDate = postDate;
+		this.memberVO = memberVO;
+		this.commentVO = commentVO;
+	}
+	
 
 	public int getPostId() {
 		return postId;
@@ -74,6 +115,22 @@ public class PostVO implements Serializable{
 		this.postDate = postDate;
 	}
 
+	public MemberVO getMemberVO() {
+		return memberVO;
+	}
+
+	public void setMemberVO(MemberVO memberVO) {
+		this.memberVO = memberVO;
+	}
+
+	public CommentVO getCommentVO() {
+		return commentVO;
+	}
+
+	public void setCommentVO(CommentVO commentVO) {
+		this.commentVO = commentVO;
+	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
@@ -81,9 +138,9 @@ public class PostVO implements Serializable{
 	@Override
 	public String toString() {
 		return "PostVO [postId=" + postId + ", memberId=" + memberId + ", img=" + img + ", orgImg=" + orgImg
-				+ ", postContent=" + postContent + ", postDate=" + postDate + "]";
+				+ ", postContent=" + postContent + ", postDate=" + postDate + ", memberVO=" + memberVO + ", commentVO="
+				+ commentVO + "]";
 	}
 	
-	
-
 }
+

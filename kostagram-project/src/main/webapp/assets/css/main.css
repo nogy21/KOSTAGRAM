@@ -25,10 +25,32 @@ section, summary, time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;}
 
+@font-face {
+    font-family: 'Uiyeun';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105@1.1/Uiyeun.woff') format('woff');
+    font-weight: normal;
+    font-style: normal; 
+}
+body{
+	font-family: 'Uiyeun';
+	font-size: 35px;
+}
+
 #profile_img{
    border-radius: 70%;
    width : 50px;
    height : 50px;
+}
+
+#content_img{
+   width : 580px;
+   height : 550px;
+}
+
+#profile_img2{
+   border-radius: 70%;
+   width : 200px;
+   height : 200px;
 }
 
 #profile_name{
@@ -49,6 +71,24 @@ section, summary, time, mark, audio, video {
 
 #main_font{
    font-family: sans-serif;
+}
+
+#detail_img{
+   width : 60%;
+   margin: 0 auto;
+}
+
+#detail_div{
+   margin: 0 auto;
+}
+
+#heart{
+   width : 70%;
+}
+
+#like_table{
+   width : 20%;
+   margin-bottom: 50px;
 }
 
 .test {
@@ -93,19 +133,19 @@ blockquote, q {
 		content: none;
 	}
 
-table {
+/* table {
 	border-collapse: collapse;
 	border-spacing: 0;
-}
+} */
 
 body {
 	-webkit-text-size-adjust: none;
 }
 
-mark {
+/* mark {
 	background-color: transparent;
 	color: inherit;
-}
+} */
 
 /* input::-moz-focus-inner {
 	border: 0;
@@ -2419,7 +2459,10 @@ mark {
 
 /* Table */
 
-	.table-wrapper {
+/* 	.table-wrapper {
+=======
+	/* .table-wrapper {
+>>>>>>> feature/main-view
 		-webkit-overflow-scrolling: touch;
 		overflow-x: auto;
 	}
@@ -2483,7 +2526,9 @@ mark {
 			table.alt tfoot {
 				border-top: 0;
 			}
+<<<<<<< HEAD
 
+ */
 /* Button */
 
 	/* input[type="submit"],
@@ -2632,7 +2677,7 @@ mark {
 			-ms-transition: -ms-transform 0.5s ease, opacity 0.5s ease;
 			transition: transform 0.5s ease, opacity 0.5s ease;
 			position: relative;
-			width: calc(70% - 2.5em);
+			width: calc(30% - 2.5em);
 			margin: 2.5em 0 0 2.5em;
 		}
 
@@ -2671,7 +2716,7 @@ mark {
 					opacity: 0.8;
 				}
 /*
- 타일 x선
+ ���씪 x�꽑
 */
 				.tiles article > .image:after {
 					pointer-events: none;
@@ -2686,7 +2731,7 @@ mark {
 					left: 0;
 					width: 100%;
 					height: 100%;
-					/*x선 background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cstyle%3Eline %7B stroke-width: 0.25px%3B stroke: %23ffffff%3B %7D%3C/style%3E%3Cline x1='0' y1='0' x2='100' y2='100' /%3E%3Cline x1='100' y1='0' x2='0' y2='100' /%3E%3C/svg%3E");*/
+					/*x�꽑 background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cstyle%3Eline %7B stroke-width: 0.25px%3B stroke: %23ffffff%3B %7D%3C/style%3E%3Cline x1='0' y1='0' x2='100' y2='100' /%3E%3Cline x1='100' y1='0' x2='0' y2='100' /%3E%3C/svg%3E");*/
 					background-position: center;
 					background-repeat: no-repeat;
 					background-size: 100% 100%;
@@ -2694,7 +2739,7 @@ mark {
 					z-index: 2;
 				}
 
-			.tiles article > a {
+			/* .tiles article > a {
 				display: -moz-flex;
 				display: -webkit-flex;
 				display: -ms-flex;
@@ -2756,8 +2801,8 @@ mark {
 					.tiles article > a .content > :last-child {
 						margin-bottom: 0;
 					}
-			/*
-			백그라운드 색상
+ */			/*
+			諛깃렇�씪�슫�뱶 �깋�긽
 			
 			.tiles article.style1 > .image:before {
 				background-color: #f2849e;
@@ -2784,7 +2829,7 @@ mark {
 				background-color: #8499e7;
 			}
 /*
-마우스 포인트 올렸을때 증가
+留덉슦�뒪 �룷�씤�듃 �삱�졇�쓣�븣 利앷�
 */
 			/* body:not(.is-touch) .tiles article:hover > .image {
 				-moz-transform: scale(1.1);
@@ -2793,7 +2838,7 @@ mark {
 				transform: scale(1.1);
 			} */
 /*
-마우스 포인트 올렸을때 색상 변경
+留덉슦�뒪 �룷�씤�듃 �삱�졇�쓣�븣 �깋�긽 蹂�寃�
 */
 				body:not(.is-touch) .tiles article:hover > .image:before {
 					background-color: #333333;
@@ -2899,7 +2944,7 @@ mark {
 			color: inherit;
 			font-weight: 900;
 			letter-spacing: 0.35em;
-			margin: 0 0 2.5em 0;
+			margin: 0 0 0 0;
 			text-decoration: none;
 			text-transform: uppercase;
 			display: inline-block;
@@ -2909,15 +2954,15 @@ mark {
 				display: inline-block;
 				vertical-align: middle;
 			}
-/*로고와 타이틀 거리간격 조정*/
+/*濡쒓퀬�� ���씠�� 嫄곕━媛꾧꺽 議곗젙*/
 			#header .logo .symbol {
 				margin-right: 0.65em;
 			}
-/*로고 크기 조정*/
+/*濡쒓퀬 �겕湲� 議곗젙*/
 				#header .logo .symbol img {
 					display: block;
-					width: 7em;
-					height: 7em;
+					width: 2em;
+					height: 2em;
 				}
 
 		#header nav {
@@ -3225,7 +3270,7 @@ mark {
 
 /* Footer */
 
-	#footer {
+/* 	#footer {
 		padding: 5em 0 6em 0 ;
 		background-color: #f6f6f6;
 	}
@@ -3371,7 +3416,7 @@ mark {
 					}
 
 		}
-
+ */
 /* Wrapper */
 
 	#wrapper > * > .inner {

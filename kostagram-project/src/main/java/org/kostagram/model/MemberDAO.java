@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.sql.DataSource;
 
@@ -50,8 +51,8 @@ public class MemberDAO {
 		ResultSet rs = null;
 		try {
 			con = dataSource.getConnection();
-			String sql="select * from member where member_id=? and password=?";
-			pstmt = con.prepareStatement(sql);
+			String loginSql="select * from member where member_id=? and password=?";
+			pstmt = con.prepareStatement(loginSql);
 			pstmt.setString(1, id);
 			pstmt.setString(2, password);
 			rs = pstmt.executeQuery();
@@ -166,4 +167,75 @@ public class MemberDAO {
         }
         return result;
     }
+
+    public ArrayList<MemberVO> getMemberDetail(String id) throws SQLException {
+    	Connection con = null;
+    	PreparedStatement pstmt = null;
+    	ResultSet rs = null;
+    	MemberVO mvo = null;
+    	ArrayList<MemberVO> list = new ArrayList<MemberVO>();
+    	try {
+    		con=dataSource.getConnection();
+    		String memberDetailSql = "select * from member where member_id=?";
+    		pstmt=con.prepareStatement(memberDetailSql);
+    		pstmt.setString(1, id);
+    		rs = pstmt.executeQuery();
+    		while(rs.next()) {
+    			mvo = new MemberVO(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8));
+    			list.add(mvo);
+    		}
+    	}finally {
+    		closeAll(rs, pstmt, con);
+    	}
+		return list;
+    }
+    public ArrayList<PostVO> myPost(String id) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		PostVO vo = null;
+		ArrayList<PostVO> list = new ArrayList<PostVO>();
+		try {
+			con = dataSource.getConnection();
+			String postSql = "select * from post where member_id=?";
+			pstmt = con.prepareStatement(postSql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				vo = new PostVO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6));
+				list.add(vo);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeAll(rs, pstmt, con);
+		}
+		return list;
+    }
+	// member 검색 메서드
+	public ArrayList<MemberVO> searchMemberByWord(String searchWord) throws SQLException {
+		ArrayList<MemberVO> searchMemberList=new ArrayList<MemberVO>();
+		String sqlSearchWord="%"+searchWord+"%"; 
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+			con=dataSource.getConnection();
+			String searchMemberSql="select * from member where member_id like ?";
+			pstmt=con.prepareStatement(searchMemberSql);
+			pstmt.setString(1, sqlSearchWord);
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				MemberVO mvo=new MemberVO();
+				mvo.setMemberId(rs.getString("member_id"));
+				mvo.setName(rs.getString("name"));
+				mvo.setProfileImgPath("org_profile_img");
+				searchMemberList.add(mvo);
+			}
+		} finally {
+			closeAll(rs, pstmt, con);
+		}
+		return searchMemberList;
+	}
  }

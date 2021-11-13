@@ -103,7 +103,7 @@ body{
 	border: none;
 	width:430px;
 	margin-top: 10px;
-	font-size: 14px;
+	font-size: 25px;
 	margin-left: 10px;
 	height:30px;
 }
@@ -113,7 +113,7 @@ body{
 	color: black;
 	line-height: 30px;
 	border-radius: 4px;;
-	position: absolute; top: 395px; right: 570px;
+	position: absolute; top: 455px; right: 380px;
 }
 .button-wrap {
 	padding-top: 13px;

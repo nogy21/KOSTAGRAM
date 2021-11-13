@@ -4,7 +4,10 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<link rel="shortcut icon" type="image/x-icon" href="images/logo.png">
+<style>
+@import url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105@1.1/Uiyeun.woff') format('woff');
+</style>
+<link rel="shortcut icon" type="image/x-icon" href="images/logo4.png">
 <title>KOSTAGRAM</title>
 <meta charset="utf-8">
 <meta name="viewport"
